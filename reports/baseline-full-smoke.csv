@@ -1,0 +1,2 @@
+﻿id,question_type,recall_at_k,mrr,answerable_accuracy,citation_accuracy,criteria_coverage,error
+q001,comparison,1.0,0.5,1.0,1.0,1.0,

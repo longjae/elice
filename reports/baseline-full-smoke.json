@@ -1,0 +1,126 @@
+{
+  "run": {
+    "created_at": "2026-09-12T06:03:25.946764+00:00",
+    "output_name": "baseline-full-smoke",
+    "retrieval_only": false,
+    "config_path": "config\\baseline.yaml",
+    "config": {
+      "chunk_size": 800,
+      "chunk_overlap": 100,
+      "embedding_batch_size": 64,
+      "top_k": 5,
+      "minimum_similarity": 0.3,
+      "temperature": 0,
+      "max_completion_tokens": 800,
+      "reasoning_effort": "none",
+      "retrieval_mode": "dense",
+      "seed": 42
+    },
+    "gold_set": "C:\\Users\\songjae\\workspace\\elice\\data\\gold_set.jsonl",
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "openai/gpt-5.6-luna",
+    "local_seed": 42
+  },
+  "summary": {
+    "question_count": 1,
+    "error_count": 0,
+    "recall_at_k": 1.0,
+    "mrr": 0.5,
+    "answerable_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "criteria_coverage": 1.0
+  },
+  "items": [
+    {
+      "id": "q001",
+      "question": "Readiness probe와 liveness probe의 목적 차이는 무엇인가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "probes"
+      ],
+      "retrieved_doc_ids": [
+        "pod-lifecycle",
+        "probes",
+        "probes",
+        "pod-lifecycle",
+        "probes"
+      ],
+      "cited_doc_ids": [
+        "pod-lifecycle",
+        "probes"
+      ],
+      "answer": "- **Readiness probe**: 컨테이너가 트래픽을 받을 준비가 되었는지 확인합니다. 실패하면 해당 Pod가 Service의 EndpointSlice에서 제거되어 트래픽을 받지 않습니다.\n- **Liveness probe**: 컨테이너가 정상적으로 진행 중인지 확인합니다. 반복해서 실패하면 kubelet이 컨테이너를 재시작합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "pod-lifecycle__0057",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Liveness probe",
+          "text": "Liveness probes determine when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.\nIf a container fails its liveness probe more times than the configured tolerance, the kubelet restarts that container. Liveness probes do not wait for readiness probes to succeed. If you want to wait before executing a liveness probe, you can either define initialDelaySeconds or use a startup probe.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.6692947149276733,
+          "rank": 1
+        },
+        {
+          "chunk_id": "probes__0026",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "What's next",
+          "text": "Learn more about Liveness, Readiness and Startup Probes .\nFor the full specification of probe-related fields, see the API reference: Pod , Container , Probe",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6672546863555908,
+          "rank": 2
+        },
+        {
+          "chunk_id": "probes__0000",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "Configure Liveness, Readiness and Startup Probes",
+          "text": "This page shows how to configure liveness, readiness and startup probes for containers.\nFor more information about probes, see Liveness, Readiness and Startup Probes .",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6542620658874512,
+          "rank": 3
+        },
+        {
+          "chunk_id": "pod-lifecycle__0058",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Readiness probe",
+          "text": "Readiness probes determine when a container is ready to accept traffic. This is useful when waiting for an application to perform time-consuming initial tasks, such as establishing network connections, loading files, and warming caches. Readiness probes can also be useful later in the container's lifecycle, for example, when recovering from temporary faults or overloads.\nIf the readiness probe returns a failed state, the EndpointSlice controller removes the Pod's IP address from the EndpointSlices of all Services that match the Pod.\nReadiness probes run on the container during its whole lifecycle.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.6305973529815674,
+          "rank": 4
+        },
+        {
+          "chunk_id": "probes__0014",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "Define a TCP liveness probe",
+          "text": "This example uses both readiness and liveness probes. The kubelet will run the first liveness probe 15 seconds after the container starts. This will attempt to connect to the goproxy container on port 8080. If the liveness probe fails, the container will be restarted. The kubelet will continue to run this check every 10 seconds.\nIn addition to the liveness probe, this configuration includes a readiness probe. The kubelet will run the first readiness probe 15 seconds after the container starts. Similar to the liveness probe, this will attempt to connect to the goproxy container on port 8080. If the probe succeeds, the Pod will be marked as ready and will receive traffic from services. If the readiness probe fails, the pod will be marked unready and will not receive traffic from any",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6249240636825562,
+          "rank": 5
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 623,
+        "completion_tokens": 85,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    }
+  ]
+}
