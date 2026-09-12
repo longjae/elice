@@ -1,0 +1,19 @@
+{
+  "description": "Repository safety guard for the Elice RAG project.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .codex/hooks/pre_tool_guard.mjs",
+            "commandWindows": "node .codex/hooks/pre_tool_guard.mjs",
+            "timeout": 5,
+            "statusMessage": "Checking repository safety rules"
+          }
+        ]
+      }
+    ]
+  }
+}

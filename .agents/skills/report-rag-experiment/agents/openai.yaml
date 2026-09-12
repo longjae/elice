@@ -1,0 +1,3 @@
+interface:
+  display_name: "Report Rag Experiment"
+  short_description: "Analyze and report Part C experiment results"
