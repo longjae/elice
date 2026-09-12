@@ -1,0 +1,31 @@
+documents:
+  - {doc_id: pods, title: Pods, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/pods/"}
+  - {doc_id: pod-lifecycle, title: Pod Lifecycle, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"}
+  - {doc_id: init-containers, title: Init Containers, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/"}
+  - {doc_id: sidecar-containers, title: Sidecar Containers, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/"}
+  - {doc_id: probes, title: Configure Liveness Readiness and Startup Probes, category: workloads, url: "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"}
+  - {doc_id: deployments, title: Deployments, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"}
+  - {doc_id: replicasets, title: ReplicaSet, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"}
+  - {doc_id: statefulsets, title: StatefulSets, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"}
+  - {doc_id: daemonsets, title: DaemonSet, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"}
+  - {doc_id: jobs, title: Jobs, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/job/"}
+  - {doc_id: cronjobs, title: CronJob, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/"}
+  - {doc_id: hpa, title: Horizontal Pod Autoscaling, category: workloads, url: "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"}
+  - {doc_id: services, title: Service, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/service/"}
+  - {doc_id: ingress, title: Ingress, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/ingress/"}
+  - {doc_id: gateway-api, title: Gateway API, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/gateway/"}
+  - {doc_id: endpoint-slices, title: EndpointSlices, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/"}
+  - {doc_id: dns, title: DNS for Services and Pods, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/"}
+  - {doc_id: network-policies, title: Network Policies, category: networking, url: "https://kubernetes.io/docs/concepts/services-networking/network-policies/"}
+  - {doc_id: configmaps, title: ConfigMaps, category: configuration, url: "https://kubernetes.io/docs/concepts/configuration/configmap/"}
+  - {doc_id: secrets, title: Secrets, category: configuration, url: "https://kubernetes.io/docs/concepts/configuration/secret/"}
+  - {doc_id: resource-management, title: Resource Management for Pods and Containers, category: configuration, url: "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"}
+  - {doc_id: scheduling-framework, title: Scheduling Framework, category: scheduling, url: "https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/"}
+  - {doc_id: assign-pods-nodes, title: Assigning Pods to Nodes, category: scheduling, url: "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/"}
+  - {doc_id: taints-tolerations, title: Taints and Tolerations, category: scheduling, url: "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/"}
+  - {doc_id: topology-spread, title: Pod Topology Spread Constraints, category: scheduling, url: "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/"}
+  - {doc_id: priority-preemption, title: Pod Priority and Preemption, category: scheduling, url: "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/"}
+  - {doc_id: debug-pods, title: Debug Pods, category: troubleshooting, url: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/"}
+  - {doc_id: debug-services, title: Debug Services, category: troubleshooting, url: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/"}
+  - {doc_id: debug-running-pod, title: Debug a Running Pod, category: troubleshooting, url: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/"}
+  - {doc_id: resource-quotas, title: Configure Memory and CPU Quotas, category: troubleshooting, url: "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/"}
