@@ -1,0 +1,3006 @@
+{
+  "run": {
+    "created_at": "2026-09-12T06:07:46.221962+00:00",
+    "output_name": "hybrid-full",
+    "retrieval_only": false,
+    "config_path": "config\\hybrid.yaml",
+    "config": {
+      "chunk_size": 800,
+      "chunk_overlap": 100,
+      "embedding_batch_size": 64,
+      "top_k": 5,
+      "minimum_similarity": 0.3,
+      "temperature": 0,
+      "max_completion_tokens": 800,
+      "reasoning_effort": "none",
+      "retrieval_mode": "hybrid_rrf",
+      "candidate_k": 50,
+      "rrf_k": 60,
+      "dense_weight": 0.8,
+      "bm25_weight": 0.2,
+      "seed": 42
+    },
+    "gold_set": "C:\\Users\\songjae\\workspace\\elice\\data\\gold_set.jsonl",
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "openai/gpt-5.6-luna",
+    "local_seed": 42
+  },
+  "summary": {
+    "question_count": 28,
+    "error_count": 0,
+    "recall_at_k": 0.9294871794871795,
+    "mrr": 0.9038461538461539,
+    "answerable_accuracy": 0.9642857142857143,
+    "citation_accuracy": 0.9285714285714286,
+    "criteria_coverage": 0.885897435897436
+  },
+  "items": [
+    {
+      "id": "q001",
+      "question": "Readiness probe와 liveness probe의 목적 차이는 무엇인가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "probes"
+      ],
+      "retrieved_doc_ids": [
+        "pod-lifecycle",
+        "probes",
+        "probes",
+        "probes",
+        "pod-lifecycle"
+      ],
+      "cited_doc_ids": [
+        "pod-lifecycle",
+        "probes"
+      ],
+      "answer": "- **Readiness probe**: 컨테이너가 트래픽을 받을 준비가 되었는지 확인합니다. 실패하면 해당 Pod가 Service의 EndpointSlice에서 제거되어 트래픽을 받지 않습니다.\n- **Liveness probe**: 컨테이너가 정상적으로 진행 중인지 확인합니다. 설정된 횟수 이상 실패하면 kubelet이 컨테이너를 재시작합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "pod-lifecycle__0057",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Liveness probe",
+          "text": "Liveness probes determine when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.\nIf a container fails its liveness probe more times than the configured tolerance, the kubelet restarts that container. Liveness probes do not wait for readiness probes to succeed. If you want to wait before executing a liveness probe, you can either define initialDelaySeconds or use a startup probe.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.6692947149276733,
+          "rank": 1,
+          "retrieval_score": 0.016099828725226327,
+          "dense_rank": 1,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "probes__0026",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "What's next",
+          "text": "Learn more about Liveness, Readiness and Startup Probes .\nFor the full specification of probe-related fields, see the API reference: Pod , Container , Probe",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6672546863555908,
+          "rank": 2,
+          "retrieval_score": 0.015933528836754644,
+          "dense_rank": 2,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "probes__0014",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "Define a TCP liveness probe",
+          "text": "This example uses both readiness and liveness probes. The kubelet will run the first liveness probe 15 seconds after the container starts. This will attempt to connect to the goproxy container on port 8080. If the liveness probe fails, the container will be restarted. The kubelet will continue to run this check every 10 seconds.\nIn addition to the liveness probe, this configuration includes a readiness probe. The kubelet will run the first readiness probe 15 seconds after the container starts. Similar to the liveness probe, this will attempt to connect to the goproxy container on port 8080. If the probe succeeds, the Pod will be marked as ready and will receive traffic from services. If the readiness probe fails, the pod will be marked unready and will not receive traffic from any",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6249240636825562,
+          "rank": 3,
+          "retrieval_score": 0.015586380832282472,
+          "dense_rank": 5,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "probes__0000",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "Configure Liveness, Readiness and Startup Probes",
+          "text": "This page shows how to configure liveness, readiness and startup probes for containers.\nFor more information about probes, see Liveness, Readiness and Startup Probes .",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.6542620658874512,
+          "rank": 4,
+          "retrieval_score": 0.015262515262515262,
+          "dense_rank": 3,
+          "bm25_rank": 18
+        },
+        {
+          "chunk_id": "pod-lifecycle__0058",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Readiness probe",
+          "text": "Readiness probes determine when a container is ready to accept traffic. This is useful when waiting for an application to perform time-consuming initial tasks, such as establishing network connections, loading files, and warming caches. Readiness probes can also be useful later in the container's lifecycle, for example, when recovering from temporary faults or overloads.\nIf the readiness probe returns a failed state, the EndpointSlice controller removes the Pod's IP address from the EndpointSlices of all Services that match the Pod.\nReadiness probes run on the container during its whole lifecycle.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.6305973529815674,
+          "rank": 5,
+          "retrieval_score": 0.015131578947368421,
+          "dense_rank": 4,
+          "bm25_rank": 16
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 623,
+        "completion_tokens": 89,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q002",
+      "question": "Pod phase에는 어떤 값들이 있는가?",
+      "question_type": "fact",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "pod-lifecycle"
+      ],
+      "retrieved_doc_ids": [
+        "pod-lifecycle",
+        "pod-lifecycle",
+        "pod-lifecycle",
+        "scheduling-framework",
+        "debug-running-pod"
+      ],
+      "cited_doc_ids": [
+        "pod-lifecycle",
+        "scheduling-framework",
+        "debug-running-pod"
+      ],
+      "answer": "제공된 CONTEXT에는 Pod phase의 가능한 값 목록이 포함되어 있지 않아 정확히 답할 수 없습니다. 다만 예시로 `Running`이 언급되어 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.2,
+      "retrieval": [
+        {
+          "chunk_id": "pod-lifecycle__0007",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Pod phase",
+          "text": "A Pod's status field is a PodStatus object, which has a phase field.\nThe phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The phase is not intended to be a comprehensive rollup of observations of container or Pod state, nor is it intended to be a comprehensive state machine.\nThe number and meanings of Pod phase values are tightly guarded. Other than what is documented here, nothing should be assumed about Pods that have a given phase value.\nHere are the possible values for phase :\nWhen a pod is failing to start repeatedly, CrashLoopBackOff may appear in the Status field of some kubectl commands. Similarly, when a pod is being deleted, Terminating may appear in the Status field of some kubectl commands.\nMake sure not to confuse Status , a kubectl display",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.5071315765380859,
+          "rank": 1,
+          "retrieval_score": 0.01639344262295082,
+          "dense_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "pod-lifecycle__0010",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Container states",
+          "text": "As well as the phase of the Pod overall, Kubernetes tracks the state of each container inside a Pod. You can use container lifecycle hooks to trigger events to run at certain points in a container's lifecycle.\nOnce the scheduler assigns a Pod to a Node, the kubelet starts creating containers for that Pod using a container runtime . There are three possible container states: Waiting , Running , and Terminated .\nTo check the state of a Pod's containers, you can use kubectl describe pod <name-of-pod> . The output shows the state for each container within that Pod.\nEach state has a specific meaning:",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.35362672805786133,
+          "rank": 2,
+          "retrieval_score": 0.015555555555555555,
+          "dense_rank": 3,
+          "bm25_rank": 10
+        },
+        {
+          "chunk_id": "pod-lifecycle__0008",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Pod phase",
+          "text": "ar in the Status field of some kubectl commands.\nMake sure not to confuse Status , a kubectl display field for user intuition, with the pod's phase . Pod phase is an explicit part of the Kubernetes data model and of the Pod API .\nNAMESPACE NAME READY STATUS RESTARTS AGE alessandras-namespace alessandras-pod 0/1 CrashLoopBackOff 200 2d9h\nA Pod is granted a term to terminate gracefully, which defaults to 30 seconds. You can use the flag --force to terminate a Pod by force .\nSince Kubernetes 1.27, the kubelet transitions deleted Pods to a terminal phase ( Failed or Succeeded depending on the exit statuses of the pod containers) before their deletion from the API server, with two exceptions:\nstatic Pods (which are managed directly by the kubelet and represented by mirror Pods )\nforce-deleted",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.3291018307209015,
+          "rank": 3,
+          "retrieval_score": 0.01516610495907559,
+          "dense_rank": 7,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "scheduling-framework__0017",
+          "doc_id": "scheduling-framework",
+          "title": "Scheduling Framework",
+          "section": "Reserve",
+          "text": "nd the Reserve phase is considered to have failed. If the Reserve method of all plugins succeed, the Reserve phase is considered to be successful and the rest of the scheduling cycle and the binding cycle are executed.\nThe Unreserve phase is triggered if the Reserve phase or a later phase fails. When this happens, the Unreserve method of all Reserve plugins will be executed in the reverse order of Reserve method calls. This phase exists to clean up the state associated with the reserved Pod.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/",
+          "category": "scheduling",
+          "score": 0.32882726192474365,
+          "rank": 4,
+          "retrieval_score": 0.014841628959276019,
+          "dense_rank": 8,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "debug-running-pod__0017",
+          "doc_id": "debug-running-pod",
+          "title": "Debug a Running Pod",
+          "section": "Example: debugging Pending Pods",
+          "text": "state : running : startedAt : \"2022-02-17T21:51:05Z\" hostIP : 192.168.0.113 phase : Running podIP : 10.88.0.3 podIPs : - ip : 10.88.0.3 - ip : 2001 : db8::1 qosClass : Guaranteed startTime : \"2022-02-17T21:51:01Z\"",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+          "category": "troubleshooting",
+          "score": 0.3217945098876953,
+          "rank": 5,
+          "retrieval_score": 0.01445887445887446,
+          "dense_rank": 10,
+          "bm25_rank": 6
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 793,
+        "completion_tokens": 42,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q003",
+      "question": "Init container는 일반 애플리케이션 컨테이너보다 먼저 어떻게 실행되는가?",
+      "question_type": "fact",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "init-containers"
+      ],
+      "retrieved_doc_ids": [
+        "init-containers",
+        "init-containers",
+        "init-containers",
+        "init-containers",
+        "init-containers"
+      ],
+      "cited_doc_ids": [
+        "init-containers"
+      ],
+      "answer": "Init container는 Pod의 `initContainers` 필드에 정의되며, 애플리케이션 컨테이너가 시작되기 전에 실행됩니다.\n\n여러 개라면 정의된 순서대로 하나씩 실행되고, 각 init container가 성공적으로 완료되어야 다음 init container가 시작됩니다. 모든 init container가 성공적으로 완료된 후에야 애플리케이션 컨테이너들이 시작되며, 이들은 병렬로 시작할 수 있습니다. 실패하면 성공할 때까지 kubelet이 반복해서 재시작합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "init-containers__0000",
+          "doc_id": "init-containers",
+          "title": "Init Containers",
+          "section": "Init Containers",
+          "text": "This page provides an overview of init containers: specialized containers that run before app containers in a Pod . Init containers can contain utilities or setup scripts not present in an app image.\nYou can specify init containers in the Pod specification alongside the containers array (which describes app containers).\nIn Kubernetes, a sidecar container is a container that starts before the main application container and continues to run . This document is about init containers: containers that run to completion during Pod initialization.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+          "category": "workloads",
+          "score": 0.5283527374267578,
+          "rank": 1,
+          "retrieval_score": 0.015823412698412698,
+          "dense_rank": 3,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "init-containers__0005",
+          "doc_id": "init-containers",
+          "title": "Init Containers",
+          "section": "Differences from sidecar containers",
+          "text": "Init containers run and complete their tasks before the main application container starts. Unlike sidecar containers , init containers are not continuously running alongside the main containers.\nInit containers run to completion sequentially, and the main container does not start until all the init containers have successfully completed.\ninit containers do not support lifecycle , livenessProbe , readinessProbe , or startupProbe whereas sidecar containers support all these probes to control their lifecycle.\nInit containers share the same resources (CPU, memory, network) with the main application containers but do not interact directly with them. They can, however, use shared volumes for data exchange.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+          "category": "workloads",
+          "score": 0.546082079410553,
+          "rank": 2,
+          "retrieval_score": 0.01576036866359447,
+          "dense_rank": 2,
+          "bm25_rank": 10
+        },
+        {
+          "chunk_id": "init-containers__0001",
+          "doc_id": "init-containers",
+          "title": "Init Containers",
+          "section": "Understanding init containers",
+          "text": "A Pod can have multiple containers running apps within it, but it can also have one or more init containers, which are run before the app containers are started.\nInit containers are exactly like regular containers, except:\nInit containers always run to completion.\nEach init container must complete successfully before the next one starts.\nIf a Pod's init container fails, the kubelet repeatedly restarts that init container until it succeeds. However, if the Pod has a restartPolicy of Never, and an init container fails during startup of that Pod, Kubernetes treats the overall Pod as failed.\nTo specify an init container for a Pod, add the initContainers field into the Pod specification , as an array of container items (similar to the app containers field and its contents). See Container in",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+          "category": "workloads",
+          "score": 0.5152252316474915,
+          "rank": 3,
+          "retrieval_score": 0.015586380832282472,
+          "dense_rank": 5,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "init-containers__0006",
+          "doc_id": "init-containers",
+          "title": "Init Containers",
+          "section": "Using init containers",
+          "text": "Because init containers have separate images from app containers, they have some advantages for start-up related code:\nInit containers can contain utilities or custom code for setup that are not present in an app image. For example, there is no need to make an image FROM another image just to use a tool like sed , awk , python , or dig during setup.\nThe application image builder and deployer roles can work independently without the need to jointly build a single app image.\nInit containers can run with a different view of the filesystem than app containers in the same Pod. Consequently, they can be given access to Secrets that app containers cannot access.\nBecause init containers run to completion before any app containers start, init containers offer a mechanism to block or delay app",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+          "category": "workloads",
+          "score": 0.5714414119720459,
+          "rank": 4,
+          "retrieval_score": 0.015361945109596611,
+          "dense_rank": 1,
+          "bm25_rank": 29
+        },
+        {
+          "chunk_id": "init-containers__0007",
+          "doc_id": "init-containers",
+          "title": "Init Containers",
+          "section": "Using init containers",
+          "text": "completion before any app containers start, init containers offer a mechanism to block or delay app container startup until a set of preconditions are met. Once preconditions are met, all of the app containers in a Pod can start in parallel.\nInit containers can securely run utilities or custom code that would otherwise make an app container image less secure. By keeping unnecessary tools separate you can limit the attack surface of your app container image.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+          "category": "workloads",
+          "score": 0.5053645372390747,
+          "rank": 5,
+          "retrieval_score": 0.015019762845849802,
+          "dense_rank": 6,
+          "bm25_rank": 9
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 743,
+        "completion_tokens": 118,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q004",
+      "question": "Sidecar container가 Pod의 주 애플리케이션과 독립적인 수명주기를 갖는 이유를 설명하라.",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "sidecar-containers"
+      ],
+      "retrieved_doc_ids": [
+        "sidecar-containers",
+        "pods",
+        "sidecar-containers",
+        "pod-lifecycle",
+        "sidecar-containers"
+      ],
+      "cited_doc_ids": [
+        "sidecar-containers",
+        "pods",
+        "pod-lifecycle"
+      ],
+      "answer": "Sidecar container는 주 애플리케이션과 별도로 재시작되고 실행될 수 있도록 설계되었기 때문입니다.\n\n- 주 애플리케이션과 동시에 실행되며 Pod 수명 동안 지원 서비스를 제공합니다.\n- 주 애플리케이션이 종료되거나 재시작되어도 독립적으로 재시작될 수 있습니다.\n- 자체 `restartPolicy`가 항상 `Always`로 설정되어 주 애플리케이션의 종료 코드나 Pod 수준 정책과 무관하게 동작합니다.\n- 프로브를 사용해 자체 수명주기를 제어할 수도 있습니다.\n\n따라서 로깅, 파일 갱신 등 보조 기능을 주 애플리케이션과 분리해 지속적으로 제공할 수 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "sidecar-containers__0012",
+          "doc_id": "sidecar-containers",
+          "title": "Sidecar Containers",
+          "section": "Differences from init containers",
+          "text": "Sidecar containers work alongside the main container, extending its functionality and providing additional services.\nSidecar containers run concurrently with the main application container. They are active throughout the lifecycle of the pod and can be started and stopped independently of the main container. Unlike init containers , sidecar containers support probes to control their lifecycle.\nSidecar containers can interact directly with the main application containers, because like init containers they always share the same network, and can optionally also share volumes (filesystems).\nInit containers stop before the main containers start up, so init containers cannot exchange messages with the app container in a Pod. Any data passing is one-way (for example, an init container can put",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/",
+          "category": "workloads",
+          "score": 0.5157375931739807,
+          "rank": 1,
+          "retrieval_score": 0.01568100358422939,
+          "dense_rank": 2,
+          "bm25_rank": 12
+        },
+        {
+          "chunk_id": "pods__0034",
+          "doc_id": "pods",
+          "title": "Pods",
+          "section": "Pods with multiple containers",
+          "text": "un multiple containers that need to work together . A Pod can encapsulate an application composed of multiple co-located containers that are tightly coupled and need to share resources. These co-located containers form a single cohesive unit of service—for example, one container serving data stored in a shared volume to the public, while a separate sidecar container refreshes or updates those files. The Pod wraps these containers, storage resources, and an ephemeral network identity together as a single unit.\nFor example, you might have a container that acts as a web server for files in a shared volume, and a separate sidecar container that updates those files from a remote source, as in the following diagram:\nSome Pods have init containers as well as app containers . By default, init",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/",
+          "category": "workloads",
+          "score": 0.5159049034118652,
+          "rank": 2,
+          "retrieval_score": 0.015553778488604559,
+          "dense_rank": 1,
+          "bm25_rank": 22
+        },
+        {
+          "chunk_id": "sidecar-containers__0007",
+          "doc_id": "sidecar-containers",
+          "title": "Sidecar Containers",
+          "section": "Sidecar containers and Pod lifecycle",
+          "text": "e order of their appearance in the Pod specification. This approach ensures that the sidecars remain operational, supporting other containers within the Pod, until their service is no longer required.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/",
+          "category": "workloads",
+          "score": 0.5136761665344238,
+          "rank": 3,
+          "retrieval_score": 0.015230058268032951,
+          "dense_rank": 3,
+          "bm25_rank": 19
+        },
+        {
+          "chunk_id": "pod-lifecycle__0023",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Container restarts",
+          "text": "iners ignore Pod-level restartPolicy : They use their own container-level restartPolicy field, which is always set to Always\nIndependent lifecycle : Sidecar containers can restart independently of the main application container\nPersistent operation : Sidecar containers remain running throughout the Pod's lifetime to provide supporting services\nExample: Pod with sidecar container\napiVersion : v1 kind : Pod metadata : name : app-with-sidecar spec : restartPolicy : OnFailure # Applies to main container only initContainers : - name : logging-sidecar # This is a sidecar container image : fluent/fluent-bit:1.8 restartPolicy : Always # Sidecar always restarts regardless of exit code # Provides logging services throughout Pod lifetime containers : - name : main-app # This follows Pod-level",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.4921279847621918,
+          "rank": 4,
+          "retrieval_score": 0.01521898703205285,
+          "dense_rank": 7,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "sidecar-containers__0017",
+          "doc_id": "sidecar-containers",
+          "title": "Sidecar Containers",
+          "section": "What's next",
+          "text": "Learn how to Adopt Sidecar Containers\nRead a blog post on native sidecar containers .\nRead about creating a Pod that has an init container .\nLearn about the types of probes : liveness, readiness, startup probe.\nLearn about pod overhead .",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/",
+          "category": "workloads",
+          "score": 0.45923733711242676,
+          "rank": 5,
+          "retrieval_score": 0.014939309056956115,
+          "dense_rank": 8,
+          "bm25_rank": 3
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 682,
+        "completion_tokens": 163,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q005",
+      "question": "Deployment 롤아웃이 멈췄을 때 진행 상태를 확인하는 방법은 무엇인가?",
+      "question_type": "troubleshooting",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "deployments"
+      ],
+      "retrieved_doc_ids": [
+        "deployments",
+        "deployments",
+        "deployments",
+        "deployments",
+        "deployments"
+      ],
+      "cited_doc_ids": [
+        "deployments"
+      ],
+      "answer": "Deployment의 진행 상태는 다음 방법으로 확인할 수 있습니다.\n\n- `kubectl rollout status`로 롤아웃 상태를 확인합니다.\n  ```bash\n  kubectl rollout status deployment/nginx-deployment\n  ```\n- Deployment의 상태를 확인합니다.\n  ```bash\n  kubectl describe deployment nginx-deployment\n  ```\n  또는\n  ```bash\n  kubectl get deployment nginx-deployment -o yaml\n  ```\n- 멈춤을 감지하려면 `.spec.progressDeadlineSeconds`를 설정합니다. 지정한 시간 동안 진행이 없으면 Deployment 상태에 롤아웃이 정체되었음이 표시됩니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "deployments__0080",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Failed Deployment",
+          "text": "Your Deployment may get stuck trying to deploy its newest ReplicaSet without ever completing. This can occur due to some of the following factors:\nInsufficient quota\nReadiness probe failures\nImage pull errors\nInsufficient permissions\nLimit ranges\nApplication runtime misconfiguration\nOne way you can detect this condition is to specify a deadline parameter in your Deployment spec: ( .spec.progressDeadlineSeconds ). .spec.progressDeadlineSeconds denotes the number of seconds the Deployment controller waits before indicating (in the Deployment status) that the Deployment progress has stalled.\nThe following kubectl command sets the spec with progressDeadlineSeconds to make the controller report lack of progress of a rollout for a Deployment after 10 minutes:\nkubectl patch",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.3560129404067993,
+          "rank": 1,
+          "retrieval_score": 0.015295815295815297,
+          "dense_rank": 6,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "deployments__0076",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Deployment status",
+          "text": "A Deployment enters various states during its lifecycle. It can be progressing while rolling out a new ReplicaSet, it can be complete , or it can fail to progress .",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.36671561002731323,
+          "rank": 2,
+          "retrieval_score": 0.014997263273125342,
+          "dense_rank": 3,
+          "bm25_rank": 27
+        },
+        {
+          "chunk_id": "deployments__0082",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Failed Deployment",
+          "text": "e Kubernetes API conventions for more information on status conditions.\nYou may experience transient errors with your Deployments, either due to a low timeout that you have set or due to any other kind of error that can be treated as transient. For example, let's suppose you have insufficient quota. If you describe the Deployment you will notice the following section:\nkubectl describe deployment nginx-deployment\nThe output is similar to this:\n<...> Conditions: Type Status Reason ---- ------ ------ Available True MinimumReplicasAvailable Progressing True ReplicaSetUpdated ReplicaFailure True FailedCreate <...>\nIf you run kubectl get deployment nginx-deployment -o yaml , the Deployment status is similar to this:\nstatus: availableReplicas: 2 conditions: - lastTransitionTime:",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.3582693338394165,
+          "rank": 3,
+          "retrieval_score": 0.01483933787731256,
+          "dense_rank": 5,
+          "bm25_rank": 19
+        },
+        {
+          "chunk_id": "deployments__0002",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Use Case",
+          "text": "ate more load .\nPause the rollout of a Deployment to apply multiple fixes to its PodTemplateSpec and then resume it to start a new rollout.\nUse the status of the Deployment as an indicator that a rollout has stuck.\nClean up older ReplicaSets that you don't need anymore.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.3909894824028015,
+          "rank": 4,
+          "retrieval_score": 0.014772384684956286,
+          "dense_rank": 2,
+          "bm25_rank": 47
+        },
+        {
+          "chunk_id": "deployments__0079",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Complete Deployment",
+          "text": "even when availability of replicas changes (which does instead affect the Available condition).\nYou can check if a Deployment has completed by using kubectl rollout status . If the rollout completed successfully, kubectl rollout status returns a zero exit code.\nkubectl rollout status deployment/nginx-deployment\nThe output is similar to this:\nWaiting for rollout to finish: 2 of 3 updated replicas are available... deployment \"nginx-deployment\" successfully rolled out\nand the exit status from kubectl rollout is 0 (success):\necho $?\n0",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.36632275581359863,
+          "rank": 5,
+          "retrieval_score": 0.0145,
+          "dense_rank": 4,
+          "bm25_rank": 40
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 629,
+        "completion_tokens": 138,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q006",
+      "question": "ReplicaSet을 직접 만들기보다 Deployment 사용이 권장되는 이유는 무엇인가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "replicasets",
+        "deployments"
+      ],
+      "retrieved_doc_ids": [
+        "replicasets",
+        "deployments",
+        "replicasets",
+        "deployments",
+        "deployments"
+      ],
+      "cited_doc_ids": [
+        "replicasets",
+        "deployments"
+      ],
+      "answer": "Deployment는 ReplicaSet을 관리하면서 다음 기능을 제공하므로 직접 ReplicaSet을 사용하는 것보다 권장됩니다.\n\n- Pod의 선언적 업데이트와 서버 측 롤링 업데이트\n- 새 ReplicaSet 생성 및 기존 ReplicaSet의 점진적 축소\n- 롤아웃 상태 확인과 롤백\n- 스케일 업\n- 진행 중인 업데이트의 조정\n\n따라서 ReplicaSet을 직접 관리할 필요 없이 Deployment가 ReplicaSet과 Pod의 생성·삭제·업데이트를 자동으로 조정합니다. 단, 사용자 지정 업데이트 오케스트레이션이 필요하거나 업데이트가 전혀 필요하지 않은 경우에는 ReplicaSet을 직접 사용할 수 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "replicasets__0003",
+          "doc_id": "replicasets",
+          "title": "ReplicaSet",
+          "section": "When to use a ReplicaSet",
+          "text": "A ReplicaSet ensures that a specified number of pod replicas are running at any given time. However, a Deployment is a higher-level concept that manages ReplicaSets and provides declarative updates to Pods along with a lot of other useful features. Therefore, we recommend using Deployments instead of directly using ReplicaSets, unless you require custom update orchestration or don't require updates at all.\nThis actually means that you may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/",
+          "category": "workloads",
+          "score": 0.7324241399765015,
+          "rank": 1,
+          "retrieval_score": 0.016145057128663685,
+          "dense_rank": 1,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "deployments__0001",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Use Case",
+          "text": "The following are typical use cases for Deployments:\nCreate a Deployment to rollout a ReplicaSet . The ReplicaSet creates Pods in the background. Check the status of the rollout to see if it succeeds or not.\nDeclare the new state of the Pods by updating the PodTemplateSpec of the Deployment. A new ReplicaSet is created, and the Deployment gradually scales it up while scaling down the old ReplicaSet, ensuring Pods are replaced at a controlled rate. Each new ReplicaSet updates the revision of the Deployment.\nRollback to an earlier Deployment revision if the current state of the Deployment is not stable. Each rollback updates the revision of the Deployment.\nScale up the Deployment to facilitate more load .\nPause the rollout of a Deployment to apply multiple fixes to its PodTemplateSpec and",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.5670179128646851,
+          "rank": 2,
+          "retrieval_score": 0.015347018572825024,
+          "dense_rank": 6,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "replicasets__0028",
+          "doc_id": "replicasets",
+          "title": "ReplicaSet",
+          "section": "Deployment (recommended)",
+          "text": "Deployment is an object which can own ReplicaSets and update them and their Pods via declarative, server-side rolling updates. While ReplicaSets can be used independently, today they're mainly used by Deployments as a mechanism to orchestrate Pod creation, deletion and updates. When you use Deployments you don't have to worry about managing the ReplicaSets that they create. Deployments own and manage their ReplicaSets. As such, it is recommended to use Deployments when you want ReplicaSets.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/",
+          "category": "workloads",
+          "score": 0.6789764165878296,
+          "rank": 3,
+          "retrieval_score": 0.015256166982922202,
+          "dense_rank": 2,
+          "bm25_rank": 25
+        },
+        {
+          "chunk_id": "deployments__0030",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Updating a Deployment",
+          "text": "plica set nginx-deployment-1564180365 to 1 Normal ScalingReplicaSet 22s deployment-controller Scaled down replica set nginx-deployment-2035384211 to 2 Normal ScalingReplicaSet 22s deployment-controller Scaled up replica set nginx-deployment-1564180365 to 2 Normal ScalingReplicaSet 19s deployment-controller Scaled down replica set nginx-deployment-2035384211 to 1 Normal ScalingReplicaSet 19s deployment-controller Scaled up replica set nginx-deployment-1564180365 to 3 Normal ScalingReplicaSet 14s deployment-controller Scaled down replica set nginx-deployment-2035384211 to 0\nHere you see that when you first created the Deployment, it created a ReplicaSet (nginx-deployment-2035384211) and scaled it up to 3 replicas directly. When you updated the Deployment, it created a new ReplicaSet",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.5672940015792847,
+          "rank": 4,
+          "retrieval_score": 0.015124593716143012,
+          "dense_rank": 5,
+          "bm25_rank": 11
+        },
+        {
+          "chunk_id": "deployments__0032",
+          "doc_id": "deployments",
+          "title": "Deployments",
+          "section": "Rollover (aka multiple updates in-flight)",
+          "text": "Each time a new Deployment is observed by the Deployment controller, a ReplicaSet is created to bring up the desired Pods. If the Deployment is updated, the existing ReplicaSet that controls Pods whose labels match .spec.selector but whose template does not match .spec.template is scaled down. Eventually, the new ReplicaSet is scaled to .spec.replicas and all old ReplicaSets is scaled to 0.\nIf you update a Deployment while an existing rollout is in progress, the Deployment creates a new ReplicaSet as per the update and start scaling that up, and rolls over the ReplicaSet that it was scaling up previously -- it will add it to its list of old ReplicaSets and start scaling it down.\nFor example, suppose you create a Deployment to create 5 replicas of nginx:1.14.2 , but then update the",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "category": "workloads",
+          "score": 0.5611120462417603,
+          "rank": 5,
+          "retrieval_score": 0.015114901682065862,
+          "dense_rank": 7,
+          "bm25_rank": 3
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 858,
+        "completion_tokens": 145,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q007",
+      "question": "StatefulSet이 안정적으로 유지하는 네트워크 및 스토리지 특성은 무엇인가?",
+      "question_type": "summary",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "statefulsets"
+      ],
+      "retrieved_doc_ids": [
+        "statefulsets",
+        "statefulsets",
+        "statefulsets",
+        "assign-pods-nodes",
+        "statefulsets"
+      ],
+      "cited_doc_ids": [
+        "statefulsets",
+        "assign-pods-nodes"
+      ],
+      "answer": "StatefulSet은 각 Pod에 다음과 같은 안정적인 특성을 제공합니다.\n\n- **안정적인 네트워크 식별자**: Pod마다 고유한 네트워크 정체성을 유지합니다.\n- **안정적인 스토리지**: Pod에 연결된 저장소를 유지하며, Pod가 다른 노드에 재스케줄링되어도 기존 PVC를 보존하고 다시 연결할 수 있습니다.\n\n이러한 특성은 Pod의 순번(ordinal), 네트워크 식별자, 스토리지로 구성된 고유한 Pod 정체성의 일부입니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "statefulsets__0000",
+          "doc_id": "statefulsets",
+          "title": "StatefulSets",
+          "section": "StatefulSets",
+          "text": "StatefulSet is the workload API object used to manage stateful applications.\nManages the deployment and scaling of a set of Pods , and provides guarantees about the ordering and uniqueness of these Pods.\nLike a Deployment , a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of its Pods. These pods are created from the same spec, but are not interchangeable: each has a persistent identifier that it maintains across any rescheduling.\nIf you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although individual Pods in a StatefulSet are susceptible to failure, the persistent Pod identifiers make it easier to match existing",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+          "category": "workloads",
+          "score": 0.5319026112556458,
+          "rank": 1,
+          "retrieval_score": 0.015933528836754644,
+          "dense_rank": 2,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "statefulsets__0010",
+          "doc_id": "statefulsets",
+          "title": "StatefulSets",
+          "section": "Pod Identity",
+          "text": "StatefulSet Pods have a unique identity that consists of an ordinal, a stable network identity, and stable storage. The identity sticks to the Pod, regardless of which node it's (re)scheduled on.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+          "category": "workloads",
+          "score": 0.5076128244400024,
+          "rank": 2,
+          "retrieval_score": 0.014945603709648654,
+          "dense_rank": 3,
+          "bm25_rank": 29
+        },
+        {
+          "chunk_id": "statefulsets__0042",
+          "doc_id": "statefulsets",
+          "title": "StatefulSets",
+          "section": "What's next",
+          "text": "n you delete a StatefulSet .\nLearn how to configure a Pod to use a volume for storage .\nLearn how to configure a Pod to use a PersistentVolume for storage .\nStatefulSet is a top-level resource in the Kubernetes REST API. Read the StatefulSet object definition to understand the API for stateful sets.\nRead about PodDisruptionBudget and how you can use it to manage application availability during disruptions.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+          "category": "workloads",
+          "score": 0.46542078256607056,
+          "rank": 3,
+          "retrieval_score": 0.014881474978050922,
+          "dense_rank": 7,
+          "bm25_rank": 8
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0038",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Inter-pod affinity and anti-affinity",
+          "text": "for an example of a StatefulSet configured with anti-affinity for high availability, using the same technique as this example.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.48708587884902954,
+          "rank": 4,
+          "retrieval_score": 0.014880952380952382,
+          "dense_rank": 4,
+          "bm25_rank": 24
+        },
+        {
+          "chunk_id": "statefulsets__0036",
+          "doc_id": "statefulsets",
+          "title": "StatefulSets",
+          "section": "PersistentVolumeClaim retention",
+          "text": "iated with a StatefulSet fails due to node failure, and the control plane creates a replacement Pod, the StatefulSet retains the existing PVC. The existing volume is unaffected, and the cluster will attach it to the node where the new Pod is about to launch.\nThe default for policies is Retain , matching the StatefulSet behavior before this new feature.\nHere is an example policy:\napiVersion : apps/v1 kind : StatefulSet ... spec : persistentVolumeClaimRetentionPolicy : whenDeleted : Retain whenScaled : Delete ...\nThe StatefulSet controller adds owner references to its PVCs, which are then deleted by the garbage collector after the Pod is terminated. This enables the Pod to cleanly unmount all volumes before the PVCs are deleted (and before the backing PV and volume are deleted, depending on",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+          "category": "workloads",
+          "score": 0.4622420072555542,
+          "rank": 5,
+          "retrieval_score": 0.014719202898550724,
+          "dense_rank": 9,
+          "bm25_rank": 4
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 609,
+        "completion_tokens": 127,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q008",
+      "question": "모든 적격 노드에 로그 수집 Pod 하나씩 배치하려면 어떤 워크로드를 사용해야 하는가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "daemonsets"
+      ],
+      "retrieved_doc_ids": [
+        "network-policies",
+        "jobs",
+        "hpa",
+        "debug-running-pod",
+        "network-policies"
+      ],
+      "cited_doc_ids": [
+        "network-policies",
+        "jobs",
+        "hpa"
+      ],
+      "answer": "모든 적격 노드에 로그 수집 Pod를 하나씩 배치하려면 **DaemonSet**을 사용해야 합니다. 제공된 CONTEXT에는 DaemonSet에 대한 직접적인 설명이 없어, 세부 설정은 확인할 수 없습니다.",
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 0.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "network-policies__0032",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "NetworkPolicy and hostNetwork pods",
+          "text": "ork pod is selected by spec.podSelector . ... spec : podSelector : matchLabels : role : client ...\na hostNetwork pod is selected by spec.podSelector .\n... spec : podSelector : matchLabels : role : client ...\na hostNetwork pod is selected by a podSelector or namespaceSelector in an ingress or egress rule. ... ingress : - from : - podSelector : matchLabels : role : client ...\na hostNetwork pod is selected by a podSelector or namespaceSelector in an ingress or egress rule.\n... ingress : - from : - podSelector : matchLabels : role : client ...\nAt the same time, since hostNetwork pods have the same IP addresses as the nodes they reside on, their connections will be treated as node connections. For example, you can allow traffic from a hostNetwork Pod using an ipBlock rule.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.4019448161125183,
+          "rank": 1,
+          "retrieval_score": 0.013114754098360656,
+          "dense_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "jobs__0025",
+          "doc_id": "jobs",
+          "title": "Jobs",
+          "section": "Integrate with Workload APIs",
+          "text": "andard pod-by-pod scheduling outcome of an ordinary Job. The controller still creates a Workload and PodGroup for every eligible Job (including Basic ones), so the observable objects are consistent regardless of the policy.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/job/",
+          "category": "workloads",
+          "score": 0.39788103103637695,
+          "rank": 2,
+          "retrieval_score": 0.012903225806451613,
+          "dense_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "hpa__0006",
+          "doc_id": "hpa",
+          "title": "Horizontal Pod Autoscaling",
+          "section": "How does a HorizontalPodAutoscaler work?",
+          "text": "type of target specified) across all targeted Pods, and produces a ratio used to scale the number of desired replicas.\nPlease note that if some of the Pod's containers do not have the relevant resource request set, CPU utilization for the Pod will not be defined and the autoscaler will not take any action for that metric. See the algorithm details section below for more information about how the autoscaling algorithm works.\nFor per-pod custom metrics, the controller functions similarly to per-pod resource metrics, except that it works with raw values, not utilization values.\nFor per-pod custom metrics, the controller functions similarly to per-pod resource metrics, except that it works with raw values, not utilization values.\nFor object metrics and external metrics, a single metric is",
+          "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+          "category": "workloads",
+          "score": 0.3646582365036011,
+          "rank": 3,
+          "retrieval_score": 0.012698412698412698,
+          "dense_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "debug-running-pod__0000",
+          "doc_id": "debug-running-pod",
+          "title": "Debug a Running Pod",
+          "section": "Debug Running Pods",
+          "text": "This page explains how to debug Pods running (or crashing) on a Node.",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+          "category": "troubleshooting",
+          "score": 0.3624180853366852,
+          "rank": 4,
+          "retrieval_score": 0.0125,
+          "dense_rank": 4,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "network-policies__0001",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "Network Policies",
+          "text": "through a combination of the following three identifiers:\nOther pods that are allowed (exception: a pod cannot block access to itself)\nNamespaces that are allowed\nIP blocks (exception: traffic to and from the node where a Pod is running is always allowed, regardless of the IP address of the Pod or the node)\nWhen defining a pod- or namespace-based NetworkPolicy, you use a selector to specify what traffic is allowed to and from the Pod(s) that match the selector.\nMeanwhile, when IP-based NetworkPolicies are created, we define policies based on IP blocks (CIDR ranges).",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.35636645555496216,
+          "rank": 5,
+          "retrieval_score": 0.012307692307692308,
+          "dense_rank": 5,
+          "bm25_rank": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 662,
+        "completion_tokens": 55,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q009",
+      "question": "Job과 CronJob의 실행 목적 차이는 무엇인가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "jobs",
+        "cronjobs"
+      ],
+      "retrieved_doc_ids": [
+        "cronjobs",
+        "jobs",
+        "cronjobs",
+        "cronjobs",
+        "cronjobs"
+      ],
+      "cited_doc_ids": [
+        "cronjobs",
+        "jobs"
+      ],
+      "answer": "- **Job**: 작업을 한 번 실행하고 완료될 때까지 관리합니다. Job이 생성한 Pod를 관리합니다.\n- **CronJob**: 지정한 Cron 형식의 일정에 따라 **반복적으로 Job을 생성**합니다. 백업이나 보고서 생성처럼 정기적인 작업에 사용합니다.\n\n즉, **Job은 단일 실행**, **CronJob은 예약된 반복 실행을 위한 Job 생성**이 목적입니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "cronjobs__0016",
+          "doc_id": "cronjobs",
+          "title": "CronJob",
+          "section": "Job creation",
+          "text": "A CronJob creates a Job object approximately once per execution time of its schedule. The scheduling is approximate because there are certain circumstances where two Jobs might be created, or no Job might be created. Kubernetes tries to avoid those situations, but does not completely prevent them. Therefore, the Jobs that you define should be idempotent .\nStarting with Kubernetes v1.32, CronJobs apply an annotation batch.kubernetes.io/cronjob-scheduled-timestamp to their created Jobs. This annotation indicates the originally scheduled creation time for the Job and is formatted in RFC3339.\nIf startingDeadlineSeconds is set to a large value or left unset (the default) and if concurrencyPolicy is set to Allow , the Jobs will always run at least once.\nFor every CronJob, the CronJob Controller",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
+          "category": "workloads",
+          "score": 0.5839716792106628,
+          "rank": 1,
+          "retrieval_score": 0.01598014888337469,
+          "dense_rank": 2,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "jobs__0032",
+          "doc_id": "jobs",
+          "title": "Jobs",
+          "section": "CronJob behavior",
+          "text": "Jobs created by a CronJob are standalone; the CronJob does not create or manage Workload objects. If a CronJob 's jobTemplate sets .spec.scheduling , the Job controller creates a separate Workload and PodGroup for each Job instance, compiled from that Job's .spec.scheduling (defaulting to Basic when omitted). These objects are garbage collected when each Job completes or is deleted.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/job/",
+          "category": "workloads",
+          "score": 0.5587586164474487,
+          "rank": 2,
+          "retrieval_score": 0.015977101223002863,
+          "dense_rank": 3,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "cronjobs__0000",
+          "doc_id": "cronjobs",
+          "title": "CronJob",
+          "section": "CronJob",
+          "text": "A CronJob creates Jobs on a repeating schedule.\nCronJob is meant for performing regular scheduled actions such as backups, report generation, and so on. One CronJob object is like one line of a crontab (cron table) file on a Unix system. It runs a Job periodically on a given schedule, written in Cron format.\nCronJobs have limitations and idiosyncrasies. For example, in certain circumstances, a single CronJob can create multiple concurrent Jobs. See the limitations below.\nWhen the control plane creates new Jobs and (indirectly) Pods for a CronJob, the .metadata.name of the CronJob is part of the basis for naming those Pods. The name of a CronJob must be a valid DNS subdomain value, but this can produce unexpected results for the Pod hostnames. For best compatibility, the name should follow",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
+          "category": "workloads",
+          "score": 0.6138977408409119,
+          "rank": 3,
+          "retrieval_score": 0.015971896955503512,
+          "dense_rank": 1,
+          "bm25_rank": 10
+        },
+        {
+          "chunk_id": "cronjobs__0020",
+          "doc_id": "cronjobs",
+          "title": "CronJob",
+          "section": "Job creation",
+          "text": "the last scheduled time until now.\nThe CronJob is only responsible for creating Jobs that match its schedule, and the Job in turn is responsible for the management of the Pods it represents.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
+          "category": "workloads",
+          "score": 0.5381103754043579,
+          "rank": 4,
+          "retrieval_score": 0.015295815295815297,
+          "dense_rank": 6,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "cronjobs__0015",
+          "doc_id": "cronjobs",
+          "title": "CronJob",
+          "section": "Modifying a CronJob",
+          "text": "By design, a CronJob contains a template for new Jobs. If you modify an existing CronJob, the changes you make will apply to new Jobs that start to run after your modification is complete. Jobs (and their Pods) that have already started continue to run without changes. That is, the CronJob does not update existing Jobs, even if those remain running.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
+          "category": "workloads",
+          "score": 0.552771806716919,
+          "rank": 5,
+          "retrieval_score": 0.015131578947368421,
+          "dense_rank": 4,
+          "bm25_rank": 16
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 658,
+        "completion_tokens": 97,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q010",
+      "question": "HPA는 어떤 관측값을 바탕으로 워크로드 복제본 수를 조정하는가?",
+      "question_type": "fact",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "hpa"
+      ],
+      "retrieved_doc_ids": [
+        "hpa",
+        "hpa",
+        "hpa",
+        "hpa",
+        "replicasets"
+      ],
+      "cited_doc_ids": [
+        "hpa",
+        "replicasets"
+      ],
+      "answer": "HPA는 워크로드의 **메트릭 관측값**을 바탕으로 복제본 수를 조정합니다. 예를 들어 CPU 사용량이나 메모리 소비량을 목표값과 비교하며, 기본 허용 오차는 10%입니다. 제공된 내용에는 그 외 구체적인 메트릭 종류가 모두 명시되어 있지는 않습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "hpa__0051",
+          "doc_id": "hpa",
+          "title": "Horizontal Pod Autoscaling",
+          "section": "Implicit maintenance-mode deactivation",
+          "text": "You can implicitly deactivate the HPA for a target without the need to change the HPA configuration itself. If the target's desired replica count is set to 0, and the HPA's minimum replica count is greater than 0, the HPA stops adjusting the target (and sets the ScalingActive Condition on itself to false ) until you reactivate it by manually adjusting the target's desired replica count or HPA's minimum replica count.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+          "category": "workloads",
+          "score": 0.44433316588401794,
+          "rank": 1,
+          "retrieval_score": 0.01639344262295082,
+          "dense_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "hpa__0016",
+          "doc_id": "hpa",
+          "title": "Horizontal Pod Autoscaling",
+          "section": "Algorithm details",
+          "text": "siredReplicas greater than the current value.\nFinally, right before HPA scales the target, the scale recommendation is recorded. The controller considers all recommendations within a configurable window choosing the highest recommendation from within that window. You can configure this value using the --horizontal-pod-autoscaler-downscale-stabilization command line option, which defaults to 5 minutes. This means that scaledowns will occur gradually, smoothing out the impact of rapidly fluctuating metric values.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+          "category": "workloads",
+          "score": 0.41249194741249084,
+          "rank": 2,
+          "retrieval_score": 0.01550062840385421,
+          "dense_rank": 2,
+          "bm25_rank": 17
+        },
+        {
+          "chunk_id": "hpa__0041",
+          "doc_id": "hpa",
+          "title": "Horizontal Pod Autoscaling",
+          "section": "Tolerance",
+          "text": "00MiB and a scale-up tolerance of 5%:\nbehavior : scaleUp : tolerance : 0.05 # 5% tolerance for scale up\nWith this configuration, the HPA algorithm will only consider scaling up if the memory consumption is higher than 105MiB (that is: 5% above the target).\nIf you don't set this field, the HPA applies the default cluster-wide tolerance of 10%. This default can be updated for both scale-up and scale-down using the kube-controller-manager --horizontal-pod-autoscaler-tolerance command line argument. (You can't use the Kubernetes API to configure this default value.)",
+          "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+          "category": "workloads",
+          "score": 0.3787197470664978,
+          "rank": 3,
+          "retrieval_score": 0.015206243032329989,
+          "dense_rank": 5,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "hpa__0052",
+          "doc_id": "hpa",
+          "title": "Horizontal Pod Autoscaling",
+          "section": "Migrating Deployments and StatefulSets to horizontal autoscaling",
+          "text": "When an HPA is enabled, it is recommended that the value of spec.replicas of the Deployment and / or StatefulSet be removed from their manifest(s) . If this isn't done, any time a change to that object is applied, for example via kubectl apply -f deployment.yaml , this will instruct Kubernetes to scale the current number of Pods to the value of the spec.replicas key. This may not be desired and could be troublesome when an HPA is active, resulting in thrashing or flapping behavior.\nKeep in mind that the removal of spec.replicas may incur a one-time degradation of Pod counts as the default value of this key is 1 (reference Deployment Replicas ). Upon the update, all Pods except 1 will begin their termination procedures. Any deployment application afterwards will behave as normal and",
+          "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+          "category": "workloads",
+          "score": 0.38462984561920166,
+          "rank": 4,
+          "retrieval_score": 0.015131578947368421,
+          "dense_rank": 4,
+          "bm25_rank": 16
+        },
+        {
+          "chunk_id": "replicasets__0026",
+          "doc_id": "replicasets",
+          "title": "ReplicaSet",
+          "section": "ReplicaSet as a Horizontal Pod Autoscaler Target",
+          "text": "A ReplicaSet can also be a target for Horizontal Pod Autoscalers (HPA) . That is, a ReplicaSet can be auto-scaled by an HPA. Here is an example HPA targeting the ReplicaSet we created in the previous example.\napiVersion : autoscaling/v1 kind : HorizontalPodAutoscaler metadata : name : frontend-scaler spec : scaleTargetRef : apiVersion : apps/v1 kind : ReplicaSet name : frontend minReplicas : 3 maxReplicas : 10 targetCPUUtilizationPercentage : 50\nSaving this manifest into hpa-rs.yaml and submitting it to a Kubernetes cluster should create the defined HPA that autoscales the target ReplicaSet depending on the CPU usage of the replicated Pods.\nkubectl apply -f https://k8s.io/examples/controllers/hpa-rs.yaml\nAlternatively, you can use the kubectl autoscale command to accomplish the same (and",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/",
+          "category": "workloads",
+          "score": 0.3535764217376709,
+          "rank": 5,
+          "retrieval_score": 0.01488970588235294,
+          "dense_rank": 8,
+          "bm25_rank": 4
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 840,
+        "completion_tokens": 83,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q011",
+      "question": "ClusterIP, NodePort, LoadBalancer Service를 외부 노출 관점에서 비교하라.",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "services"
+      ],
+      "retrieved_doc_ids": [
+        "services",
+        "ingress",
+        "ingress",
+        "services",
+        "services"
+      ],
+      "cited_doc_ids": [
+        "services",
+        "ingress"
+      ],
+      "answer": "- **ClusterIP**: 기본 Service 유형으로, 클러스터 내부에서만 접근할 수 있습니다. 외부 IP로 노출하려면 별도 구성이 필요합니다.\n- **NodePort**: 각 노드에 포트를 할당하고, 노드의 IP와 해당 포트를 통해 클러스터 외부에서 Service에 접근할 수 있습니다. Ingress 없이 외부에 노출하는 방법 중 하나입니다.\n- **LoadBalancer**: 외부 로드 밸런서를 생성해 Service를 외부에 노출합니다. 일반적으로 NodePort에 해당하는 구성을 먼저 만들고, 클라우드 컨트롤러가 외부 로드 밸런서가 해당 포트로 트래픽을 전달하도록 설정합니다. 클라우드 제공자가 지원하면 NodePort 할당을 생략하거나 지정한 `loadBalancerIP`를 사용할 수 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "services__0033",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "type: LoadBalancer",
+          "text": "d balanced.\nTo implement a Service of type: LoadBalancer , Kubernetes typically starts off by making the changes that are equivalent to you requesting a Service of type: NodePort . The cloud-controller-manager component then configures the external load balancer to forward traffic to that assigned node port.\nYou can configure a load balanced Service to omit assigning a node port, provided that the cloud provider implementation supports this.\nSome cloud providers allow you to specify the loadBalancerIP . In those cases, the load-balancer is created with the user-specified loadBalancerIP . If the loadBalancerIP field is not specified, the load balancer is set up with an ephemeral IP address. If you specify a loadBalancerIP but your cloud provider does not support the feature, the",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.5405583381652832,
+          "rank": 1,
+          "retrieval_score": 0.01598014888337469,
+          "dense_rank": 2,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "ingress__0004",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "What is Ingress?",
+          "text": "other than HTTP and HTTPS to the internet typically uses a service of type Service.Type=NodePort or Service.Type=LoadBalancer .",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.5296130776405334,
+          "rank": 2,
+          "retrieval_score": 0.015924219150025603,
+          "dense_rank": 3,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "ingress__0037",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "Alternatives",
+          "text": "You can expose a Service in multiple ways that don't directly involve the Ingress resource:\nUse Service.Type=LoadBalancer\nUse Service.Type=NodePort",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.5213958621025085,
+          "rank": 3,
+          "retrieval_score": 0.015674603174603174,
+          "dense_rank": 4,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "services__0020",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Service type",
+          "text": "For some parts of your application (for example, frontends) you may want to expose a Service onto an external IP address, one that's accessible from outside of your cluster.\nKubernetes Service types allow you to specify what kind of Service you want.\nThe available type values and their behaviors are:\nThe type field in the Service API is designed as nested functionality - each level adds to the previous. However there is an exception to this nested design. You can define a LoadBalancer Service by disabling the load balancer NodePort allocation .",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.5117381811141968,
+          "rank": 4,
+          "retrieval_score": 0.015151515151515152,
+          "dense_rank": 6,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "services__0040",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "type: LoadBalancer",
+          "text": "depending on how the load-balancer from the cloud provider delivers the traffics:\nIf the traffic is delivered to the node then DNATed to the pod, the destination would be set to the node's IP and node port;\nIf the traffic is delivered directly to the pod, the destination would be set to the pod's IP and port.\nService implementations may use this information to adjust traffic routing.\nIn a mixed environment it is sometimes necessary to route traffic from Services inside the same (virtual) network address block.\nIn a split-horizon DNS environment you would need two Services to be able to route both external and internal traffic to your endpoints.\nTo set an internal load balancer, add one of the following annotations to your Service depending on the cloud service provider you're",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.5131130814552307,
+          "rank": 5,
+          "retrieval_score": 0.014481605351170568,
+          "dense_rank": 5,
+          "bm25_rank": 32
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 610,
+        "completion_tokens": 187,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q012",
+      "question": "Ingress가 임의의 TCP나 UDP 서비스를 노출하는 일반 해법이 아닌 이유는 무엇인가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "ingress"
+      ],
+      "retrieved_doc_ids": [
+        "ingress",
+        "ingress",
+        "ingress",
+        "ingress",
+        "ingress"
+      ],
+      "cited_doc_ids": [
+        "ingress"
+      ],
+      "answer": "Ingress는 HTTP 및 HTTPS 트래픽의 라우팅을 위한 API이기 때문입니다. Ingress 리소스의 규칙은 HTTP(S) 요청을 대상으로 하며, 임의의 포트나 프로토콜을 노출할 수 없습니다. 따라서 인터넷에 TCP나 UDP 서비스를 노출하려면 일반적으로 `Service`의 `NodePort` 유형 등을 사용해야 합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "ingress__0003",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "What is Ingress?",
+          "text": "Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.\nHere is a simple example where an Ingress sends all its traffic to one Service:\nFigure. Ingress\nAn Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting. An Ingress controller is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.\nAn Ingress does not expose arbitrary ports or protocols. Exposing services other than HTTP and HTTPS to the internet typically uses a service of type Service.Type=NodePort or",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.5689550638198853,
+          "rank": 1,
+          "retrieval_score": 0.015854480125757915,
+          "dense_rank": 1,
+          "bm25_rank": 13
+        },
+        {
+          "chunk_id": "ingress__0000",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "Ingress",
+          "text": "Feature state: Stable since Kubernetes v1.19 An API object that manages external access to the services in a cluster, typically HTTP. Ingress may provide load balancing, SSL termination and name-based virtual hosting.\nAn API object that manages external access to the services in a cluster, typically HTTP.\nIngress may provide load balancing, SSL termination and name-based virtual hosting.\nThe Kubernetes project recommends using Gateway instead of Ingress . The Ingress API has been frozen.\nThis means that:\nThe Ingress API is generally available, and is subject to the stability guarantees for generally available APIs. The Kubernetes project has no plans to remove Ingress from Kubernetes.\nThe Ingress API is no longer being developed, and will have no further changes or updates made to it.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.43891721963882446,
+          "rank": 2,
+          "retrieval_score": 0.015401115401115401,
+          "dense_rank": 3,
+          "bm25_rank": 14
+        },
+        {
+          "chunk_id": "ingress__0031",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "TLS",
+          "text": "You can secure an Ingress by specifying a Secret that contains a TLS private key and certificate. The Ingress resource only supports a single TLS port, 443, and assumes TLS termination at the ingress point (traffic to the Service and its Pods is in plaintext). If the TLS configuration section in an Ingress specifies different hosts, they are multiplexed on the same port according to the hostname specified through the SNI TLS extension (provided the Ingress controller supports SNI). The TLS secret must contain keys named tls.crt and tls.key that contain the certificate and private key to use for TLS. For example:\napiVersion : v1 kind : Secret metadata : name : testsecret-tls namespace : default data : tls.crt : base64 encoded cert tls.key : base64 encoded key type :",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.48343998193740845,
+          "rank": 3,
+          "retrieval_score": 0.01522880720180045,
+          "dense_rank": 2,
+          "bm25_rank": 26
+        },
+        {
+          "chunk_id": "ingress__0007",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "The Ingress resource",
+          "text": "are expected and / or supported.\nThe Ingress spec has all the information needed to configure a load balancer or proxy server. Most importantly, it contains a list of rules matched against all incoming requests. Ingress resource only supports rules for directing HTTP(S) traffic.\nIf the ingressClassName is omitted, a default Ingress class should be defined.\nSome ingress controllers work even without the definition of a default IngressClass. Even if you use an ingress controller that is able to operate without any IngressClass, the Kubernetes project still recommends that you define a default IngressClass.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.4359256327152252,
+          "rank": 4,
+          "retrieval_score": 0.014939271255060728,
+          "dense_rank": 5,
+          "bm25_rank": 16
+        },
+        {
+          "chunk_id": "ingress__0005",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "Prerequisites",
+          "text": "You must have an Ingress controller to satisfy an Ingress. Only creating an Ingress resource has no effect.\nYou can choose from a number of Ingress controllers .\nIdeally, all Ingress controllers should fit the reference specification. In reality, the various Ingress controllers operate slightly differently.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.42615723609924316,
+          "rank": 5,
+          "retrieval_score": 0.014881474978050922,
+          "dense_rank": 7,
+          "bm25_rank": 8
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 785,
+        "completion_tokens": 84,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q013",
+      "question": "Gateway API가 Ingress보다 역할 분리와 확장성 측면에서 제공하는 장점을 요약하라.",
+      "question_type": "summary",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "gateway-api",
+        "ingress"
+      ],
+      "retrieved_doc_ids": [
+        "gateway-api",
+        "ingress",
+        "gateway-api",
+        "gateway-api",
+        "gateway-api"
+      ],
+      "cited_doc_ids": [
+        "gateway-api",
+        "ingress"
+      ],
+      "answer": "Gateway API는 다음과 같은 장점이 있습니다.\n\n- **역할 분리**: 역할 지향적 설계를 통해 클러스터 운영자와 애플리케이션 개발자의 관심사를 분리합니다. 운영자는 정책·네트워크 접근·권한을, 개발자는 애플리케이션 설정과 Service 구성을 관리할 수 있습니다.\n- **확장성**: 사용자 정의 리소스를 여러 계층에서 연결할 수 있어 세밀한 확장이 가능합니다.\n- **표현력 향상**: 헤더 기반 매칭, 트래픽 가중치 등 Ingress에서는 주로 사용자 정의 어노테이션이 필요했던 라우팅 기능을 API 종류 자체로 지원합니다.\n- **발전 방향**: Ingress는 API가 동결되어 더 이상 개발되지 않는 반면, Gateway API는 동적 인프라 프로비저닝과 고급 트래픽 라우팅을 위한 확장 가능한 메커니즘으로 설계되었습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "gateway-api__0018",
+          "doc_id": "gateway-api",
+          "title": "Gateway API",
+          "section": "Migrating from Ingress",
+          "text": "Gateway API is the successor to the Ingress API. However, it does not include the Ingress kind. As a result, a one-time conversion from your existing Ingress resources to Gateway API resources is necessary.\nRefer to the ingress migration guide for details on migrating Ingress resources to Gateway API resources.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/gateway/",
+          "category": "networking",
+          "score": 0.5513105392456055,
+          "rank": 1,
+          "retrieval_score": 0.01639344262295082,
+          "dense_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "ingress__0000",
+          "doc_id": "ingress",
+          "title": "Ingress",
+          "section": "Ingress",
+          "text": "Feature state: Stable since Kubernetes v1.19 An API object that manages external access to the services in a cluster, typically HTTP. Ingress may provide load balancing, SSL termination and name-based virtual hosting.\nAn API object that manages external access to the services in a cluster, typically HTTP.\nIngress may provide load balancing, SSL termination and name-based virtual hosting.\nThe Kubernetes project recommends using Gateway instead of Ingress . The Ingress API has been frozen.\nThis means that:\nThe Ingress API is generally available, and is subject to the stability guarantees for generally available APIs. The Kubernetes project has no plans to remove Ingress from Kubernetes.\nThe Ingress API is no longer being developed, and will have no further changes or updates made to it.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "category": "networking",
+          "score": 0.5081777572631836,
+          "rank": 2,
+          "retrieval_score": 0.015924219150025603,
+          "dense_rank": 3,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "gateway-api__0017",
+          "doc_id": "gateway-api",
+          "title": "Gateway API",
+          "section": "Conformance",
+          "text": "Gateway API covers a broad set of features and is widely implemented. This combination requires clear conformance definitions and tests to ensure that the API provides a consistent experience wherever it is used.\nSee the conformance documentation to understand details such as release channels, support levels, and running conformance tests.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/gateway/",
+          "category": "networking",
+          "score": 0.5185897350311279,
+          "rank": 3,
+          "retrieval_score": 0.015642951833848874,
+          "dense_rank": 2,
+          "bm25_rank": 13
+        },
+        {
+          "chunk_id": "gateway-api__0000",
+          "doc_id": "gateway-api",
+          "title": "Gateway API",
+          "section": "Gateway API",
+          "text": "Make network services available by using an extensible, role-oriented, protocol-aware configuration mechanism. Gateway API is an add-on containing API kinds that provide dynamic infrastructure provisioning and advanced traffic routing.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/gateway/",
+          "category": "networking",
+          "score": 0.48917388916015625,
+          "rank": 4,
+          "retrieval_score": 0.015625,
+          "dense_rank": 4,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "gateway-api__0002",
+          "doc_id": "gateway-api",
+          "title": "Gateway API",
+          "section": "Design principles",
+          "text": "ltiple isolated clusters to serve multiple tenants, e.g. a cloud provider.\nCluster Operator: Manages clusters and is typically concerned with policies, network access, application permissions, etc.\nApplication Developer: Manages an application running in a cluster and is typically concerned with application-level configuration and Service composition.\nPortable: Gateway API specifications are defined as custom resources and are supported by many implementations .\nExpressive: Gateway API kinds support functionality for common traffic routing use cases such as header-based matching, traffic weighting, and others that were only possible in Ingress by using custom annotations.\nExtensible: Gateway allows for custom resources to be linked at various layers of the API. This makes granular",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/gateway/",
+          "category": "networking",
+          "score": 0.46166205406188965,
+          "rank": 5,
+          "retrieval_score": 0.015482295482295481,
+          "dense_rank": 5,
+          "bm25_rank": 3
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 211,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q014",
+      "question": "Service backend가 많을 때 EndpointSlice가 기존 단일 Endpoints 객체보다 유리한 이유는 무엇인가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "endpoint-slices"
+      ],
+      "retrieved_doc_ids": [
+        "services",
+        "endpoint-slices",
+        "services",
+        "endpoint-slices",
+        "services"
+      ],
+      "cited_doc_ids": [
+        "services",
+        "endpoint-slices"
+      ],
+      "answer": "EndpointSlice는 Service의 백엔드 엔드포인트를 여러 객체로 나누어 관리하므로, 기존 단일 Endpoints 객체의 1000개 제한을 받지 않습니다. 따라서 백엔드가 많아도 전체 엔드포인트를 표현할 수 있습니다.\n\n반면 Endpoints API는 1000개를 초과하면 목록을 잘라내고 `endpoints.kubernetes.io/over-capacity: truncated` 어노테이션을 설정하므로, 이를 사용하는 로드밸런싱은 최대 1000개의 백엔드에만 트래픽을 보낼 수 있습니다. 또한 EndpointSlice는 듀얼 스택과 최신 기능도 지원하므로 권장됩니다.",
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.5,
+      "retrieval": [
+        {
+          "chunk_id": "services__0016",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Endpoints (deprecated)",
+          "text": "The EndpointSlice API is the evolution of the older Endpoints API. The deprecated Endpoints API has several problems relative to EndpointSlice:\nIt does not support dual-stack clusters.\nIt does not contain information needed to support newer features, such as trafficDistribution .\nIt will truncate the list of endpoints if it is too long to fit in a single object.\nBecause of this, it is recommended that all clients use the EndpointSlice API rather than Endpoints.\nKubernetes limits the number of endpoints that can fit in a single Endpoints object. When there are over 1000 backing endpoints for a Service, Kubernetes truncates the data in the Endpoints object. Because a Service can be linked with more than one EndpointSlice, the 1000 backing endpoint limit only affects the legacy Endpoints",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.6614941358566284,
+          "rank": 1,
+          "retrieval_score": 0.01634056054997356,
+          "dense_rank": 1,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "endpoint-slices__0011",
+          "doc_id": "endpoint-slices",
+          "title": "EndpointSlices",
+          "section": "Duplicate endpoints",
+          "text": "Due to the nature of EndpointSlice changes, endpoints may be represented in more than one EndpointSlice at the same time. This naturally occurs as changes to different EndpointSlice objects can arrive at the Kubernetes client watch / cache at different times.\nClients of the EndpointSlice API must iterate through all the existing EndpointSlices associated to a Service and build a complete list of unique network endpoints. It is important to mention that endpoints may be duplicated in different EndpointSlices.\nYou can find a reference implementation for how to perform this endpoint aggregation and deduplication as part of the EndpointSliceCache code within kube-proxy .",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/",
+          "category": "networking",
+          "score": 0.6121217608451843,
+          "rank": 2,
+          "retrieval_score": 0.015933528836754644,
+          "dense_rank": 2,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "services__0015",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "EndpointSlices",
+          "text": "EndpointSlices are objects that represent a subset (a slice ) of the backing network endpoints for a Service.\nYour Kubernetes cluster tracks how many endpoints each EndpointSlice represents. If there are so many endpoints for a Service that a threshold is reached, then Kubernetes adds another empty EndpointSlice and stores new endpoint information there. By default, Kubernetes makes a new EndpointSlice once the existing EndpointSlices all contain at least 100 endpoints. Kubernetes does not make the new EndpointSlice until an extra endpoint needs to be added.\nSee EndpointSlices for more information about this API.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.5727834701538086,
+          "rank": 3,
+          "retrieval_score": 0.015674603174603174,
+          "dense_rank": 4,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "endpoint-slices__0012",
+          "doc_id": "endpoint-slices",
+          "title": "EndpointSlices",
+          "section": "EndpointSlice mirroring",
+          "text": "The EndpointSlice API is a replacement for the older Endpoints API. To preserve compatibility with older controllers and user workloads that expect kube-proxy to route traffic based on Endpoints resources, the cluster's control plane mirrors most user-created Endpoints resources to corresponding EndpointSlices.\n(However, this feature, like the rest of the Endpoints API, is deprecated. Users who manually specify endpoints for selectorless Services should do so by creating EndpointSlice resources directly, rather than by creating Endpoints resources and allowing them to be mirrored.)\nThe control plane mirrors Endpoints resources unless:\nthe Endpoints resource has a endpointslice.kubernetes.io/skip-mirror label set to true .\nthe Endpoints resource has a",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/",
+          "category": "networking",
+          "score": 0.5955191850662231,
+          "rank": 4,
+          "retrieval_score": 0.01559696342305038,
+          "dense_rank": 3,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "services__0017",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Endpoints (deprecated)",
+          "text": "with more than one EndpointSlice, the 1000 backing endpoint limit only affects the legacy Endpoints API.\nIn that case, Kubernetes selects at most 1000 possible backend endpoints to store into the Endpoints object, and sets an annotation on the Endpoints: endpoints.kubernetes.io/over-capacity: truncated . The control plane also removes that annotation if the number of backend Pods drops below 1000.\nTraffic is still sent to backends, but any load balancing mechanism that relies on the legacy Endpoints API only sends traffic to at most 1000 of the available backing endpoints.\nThe same API limit means that you cannot manually update an Endpoints to have more than 1000 endpoints.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.5426260828971863,
+          "rank": 5,
+          "retrieval_score": 0.01521898703205285,
+          "dense_rank": 7,
+          "bm25_rank": 1
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 815,
+        "completion_tokens": 152,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q015",
+      "question": "같은 namespace의 Pod가 Service를 DNS 이름으로 찾을 때 사용할 수 있는 짧은 이름은 무엇인가?",
+      "question_type": "fact",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "dns"
+      ],
+      "retrieved_doc_ids": [
+        "dns",
+        "debug-services",
+        "dns",
+        "dns",
+        "dns"
+      ],
+      "cited_doc_ids": [
+        "dns",
+        "debug-services"
+      ],
+      "answer": "같은 namespace에서는 Service 이름만 사용하면 됩니다. 예: `hostnames`",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "dns__0008",
+          "doc_id": "dns",
+          "title": "DNS for Services and Pods",
+          "section": "Pod's hostname and subdomain fields",
+          "text": "y-namespace\" , will have its hostname set to \"foo\" and its fully qualified domain name (FQDN) set to \"foo.bar.my-namespace.svc.cluster.local\" (once more, as observed from within the Pod).\nIf there exists a headless Service in the same namespace as the Pod, with the same name as the subdomain, the cluster's DNS Server also returns A and/or AAAA records for the Pod's fully qualified hostname.\nExample:\napiVersion : v1 kind : Service metadata : name : busybox-subdomain spec : selector : name : busybox clusterIP : None ports : - name : foo # name is not required for single-port Services port : 1234 --- apiVersion : v1 kind : Pod metadata : name : busybox1 labels : name : busybox spec : hostname : busybox-1 subdomain : busybox-subdomain containers : - image : busybox:1.28 command : - sleep -",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+          "category": "networking",
+          "score": 0.6414318084716797,
+          "rank": 1,
+          "retrieval_score": 0.016013304822998335,
+          "dense_rank": 1,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "debug-services__0009",
+          "doc_id": "debug-services",
+          "title": "Debug Services",
+          "section": "Does the Service work by DNS name?",
+          "text": "One of the most common ways that clients consume a Service is through a DNS name.\nFrom a Pod in the same Namespace:\nnslookup hostnames\nAddress 1: 10.0.0.10 kube-dns.kube-system.svc.cluster.local Name: hostnames Address 1: 10.0.1.175 hostnames.default.svc.cluster.local\nIf this fails, perhaps your Pod and Service are in different Namespaces, try a namespace-qualified name (again, from within a Pod):\nnslookup hostnames.default\nAddress 1: 10.0.0.10 kube-dns.kube-system.svc.cluster.local Name: hostnames.default Address 1: 10.0.1.175 hostnames.default.svc.cluster.local\nIf this works, you'll need to adjust your app to use a cross-namespace name, or run your app and Service in the same Namespace. If this still fails, try a fully-qualified name:\nnslookup hostnames.default.svc.cluster.local\nAddress",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/",
+          "category": "troubleshooting",
+          "score": 0.6221442222595215,
+          "rank": 2,
+          "retrieval_score": 0.015775335775335776,
+          "dense_rank": 3,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "dns__0000",
+          "doc_id": "dns",
+          "title": "DNS for Services and Pods",
+          "section": "DNS for Services and Pods",
+          "text": "Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent DNS names instead of IP addresses.\nKubernetes publishes information about Pods and Services which is used to program DNS. kubelet configures Pods' DNS so that running containers can look up Services by name rather than IP.\nServices defined in the cluster are assigned DNS names. By default, a client Pod's DNS search list includes the Pod's own namespace and the cluster's default domain.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+          "category": "networking",
+          "score": 0.6236144304275513,
+          "rank": 3,
+          "retrieval_score": 0.01572012721490232,
+          "dense_rank": 2,
+          "bm25_rank": 11
+        },
+        {
+          "chunk_id": "dns__0006",
+          "doc_id": "dns",
+          "title": "DNS for Services and Pods",
+          "section": "A/AAAA records",
+          "text": "Kube-DNS versions, prior to the implementation of the DNS specification , had the following DNS resolution:\n<pod-IPv4-address>.<namespace>.pod.<cluster-domain>\nFor example, if a Pod in the default namespace has the IP address 172.17.0.3, and the domain name for your cluster is cluster.local , then the Pod has a DNS name:\n172-17-0-3.default.pod.cluster.local\nSome cluster DNS mechanisms, like CoreDNS , also provide A records for:\n<pod-ipv4-address>.<service-name>.<my-namespace>.svc.<cluster-domain.example>\nFor example, if a Pod in the cafe namespace has the IP address 172.17.0.3, is an endpoint of a Service named barista , and the domain name for your cluster is cluster.local , then the Pod would have this service-scoped DNS A record.\n172-17-0-3.barista.cafe.svc.cluster.local",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+          "category": "networking",
+          "score": 0.6175742149353027,
+          "rank": 4,
+          "retrieval_score": 0.015586380832282472,
+          "dense_rank": 5,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "dns__0022",
+          "doc_id": "dns",
+          "title": "DNS for Services and Pods",
+          "section": "DNS resolution on Windows nodes",
+          "text": "th this single suffix. For example, a Pod spawned in the default namespace, will have the DNS suffix default.svc.cluster.local . Inside a Windows Pod, you can resolve both kubernetes.default.svc.cluster.local and kubernetes , but not the partially qualified names ( kubernetes.default or kubernetes.default.svc ).",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+          "category": "networking",
+          "score": 0.6179744601249695,
+          "rank": 5,
+          "retrieval_score": 0.015441176470588236,
+          "dense_rank": 4,
+          "bm25_rank": 8
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 939,
+        "completion_tokens": 20,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q016",
+      "question": "NetworkPolicy가 존재해도 네트워크 플러그인이 이를 지원하지 않으면 어떻게 되는가?",
+      "question_type": "troubleshooting",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "network-policies"
+      ],
+      "retrieved_doc_ids": [
+        "network-policies",
+        "network-policies",
+        "network-policies",
+        "network-policies",
+        "network-policies"
+      ],
+      "cited_doc_ids": [
+        "network-policies"
+      ],
+      "answer": "네트워크 플러그인이 NetworkPolicy를 지원하지 않으면, NetworkPolicy 리소스를 생성해도 이를 구현하는 컨트롤러가 없으므로 아무런 효과가 없습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.5,
+      "retrieval": [
+        {
+          "chunk_id": "network-policies__0002",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "Prerequisites",
+          "text": "Network policies are implemented by the network plugin . To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.5395060181617737,
+          "rank": 1,
+          "retrieval_score": 0.015854480125757915,
+          "dense_rank": 1,
+          "bm25_rank": 13
+        },
+        {
+          "chunk_id": "network-policies__0031",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "NetworkPolicy and hostNetwork pods",
+          "text": "NetworkPolicy behaviour for hostNetwork pods is undefined, but it should be limited to 2 possibilities:\nThe network plugin can distinguish hostNetwork pod traffic from all other traffic (including being able to distinguish traffic from different hostNetwork pods on the same node), and will apply NetworkPolicy to hostNetwork pods just like it does to pod-network pods.\nThe network plugin cannot properly distinguish hostNetwork pod traffic, and so it ignores hostNetwork pods when matching podSelector and namespaceSelector . Traffic to/from hostNetwork pods is treated the same as all other traffic to/from the node IP. (This is the most common implementation.)\nThis applies when\na hostNetwork pod is selected by spec.podSelector . ... spec : podSelector : matchLabels : role : client ...\na",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.44975417852401733,
+          "rank": 2,
+          "retrieval_score": 0.01559696342305038,
+          "dense_rank": 3,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "network-policies__0027",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "Pod lifecycle",
+          "text": "When a new NetworkPolicy object is created, it may take some time for a network plugin to handle the new object. If a pod that is affected by a NetworkPolicy is created before the network plugin has completed NetworkPolicy handling, that pod may be started unprotected, and isolation rules will be applied when the NetworkPolicy handling is completed.\nOnce the NetworkPolicy is handled by a network plugin,\nAll newly created pods affected by a given NetworkPolicy will be isolated before they are started. Implementations of NetworkPolicy must ensure that filtering is effective throughout the Pod lifecycle, even from the very first instant that any container in that Pod is started. Because they are applied at Pod level, NetworkPolicies apply equally to init containers, sidecar containers, and",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.3991016745567322,
+          "rank": 3,
+          "retrieval_score": 0.015399900645802284,
+          "dense_rank": 6,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "network-policies__0022",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "Network traffic filtering",
+          "text": "NetworkPolicy is defined for layer 4 connections (TCP, UDP, and optionally SCTP). For all the other protocols, the behaviour may vary across network plugins.\nWhen a deny all network policy is defined, it is only guaranteed to deny TCP, UDP and SCTP connections. For other protocols, such as ARP or ICMP, the behaviour is undefined. The same applies to allow rules: when a specific pod is allowed as ingress source or egress destination, it is undefined what happens with (for example) ICMP packets. Protocols such as ICMP may be allowed by some network plugins and denied by others.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.49822095036506653,
+          "rank": 4,
+          "retrieval_score": 0.015284178187403994,
+          "dense_rank": 2,
+          "bm25_rank": 24
+        },
+        {
+          "chunk_id": "network-policies__0033",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "What you can't do with network policies (at least, not yet)",
+          "text": "As of Kubernetes 1.37, the following functionality does not exist in the NetworkPolicy API, but you might be able to implement workarounds using Operating System components (such as SELinux, OpenVSwitch, IPTables, and so on) or Layer 7 technologies (Ingress controllers, Service Mesh implementations) or admission controllers. In case you are new to network security in Kubernetes, its worth noting that the following User Stories cannot (yet) be implemented using the NetworkPolicy API.\nForcing internal cluster traffic to go through a common gateway (this might be best served with a service mesh or other proxy).\nAnything TLS related (use a service mesh or ingress controller for this).\nNode specific policies (you can use CIDR notation for these, but you cannot target nodes by their Kubernetes",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.43067556619644165,
+          "rank": 5,
+          "retrieval_score": 0.01483933787731256,
+          "dense_rank": 5,
+          "bm25_rank": 19
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 787,
+        "completion_tokens": 43,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q017",
+      "question": "ConfigMap과 Secret을 데이터 민감도 관점에서 어떻게 구분해야 하는가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "configmaps",
+        "secrets"
+      ],
+      "retrieved_doc_ids": [
+        "secrets",
+        "configmaps",
+        "configmaps",
+        "configmaps",
+        "configmaps"
+      ],
+      "cited_doc_ids": [
+        "secrets",
+        "configmaps"
+      ],
+      "answer": "- **ConfigMap**: 비기밀(non-confidential) 설정 데이터를 저장합니다. 환경별 설정을 컨테이너 이미지와 분리하는 용도입니다.\n- **Secret**: 서비스 계정 토큰 등 Kubernetes 내부 권한 상승이나 외부 시스템 접근으로 이어질 수 있는 민감한 값을 저장합니다. 따라서 접근 권한을 최소한으로 제한해야 하며, `list` 또는 `watch` 권한이 있으면 해당 네임스페이스의 모든 Secret 데이터를 읽을 수 있습니다.\n\n즉, **공개되어도 문제가 없는 설정은 ConfigMap**, **노출 시 보안 문제가 발생할 수 있는 인증·자격 증명 등은 Secret**에 저장해야 합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "secrets__0044",
+          "doc_id": "secrets",
+          "title": "Secrets",
+          "section": "Information security for Secrets",
+          "text": "Although ConfigMap and Secret work similarly, Kubernetes applies some additional protection for Secret objects.\nSecrets often hold values that span a spectrum of importance, many of which can cause escalations within Kubernetes (e.g. service account tokens) and to external systems. Even if an individual app can reason about the power of the Secrets it expects to interact with, other apps within the same namespace can render those assumptions invalid.\nAuthorization configuration affects how Secret data can be accessed within a namespace. For example, granting list or watch permissions on Secrets allows a subject to read all Secret data in that namespace, not only the Secrets explicitly referenced by its Pods. Restrict access to the minimum set of permissions required for a workload to",
+          "url": "https://kubernetes.io/docs/concepts/configuration/secret/",
+          "category": "configuration",
+          "score": 0.5328820943832397,
+          "rank": 1,
+          "retrieval_score": 0.01639344262295082,
+          "dense_rank": 1,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "configmaps__0000",
+          "doc_id": "configmaps",
+          "title": "ConfigMaps",
+          "section": "ConfigMaps",
+          "text": "A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume .\nA ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume .\nA ConfigMap allows you to decouple environment-specific configuration from your container images , so that your applications are easily portable.",
+          "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+          "category": "configuration",
+          "score": 0.46454620361328125,
+          "rank": 2,
+          "retrieval_score": 0.015357142857142857,
+          "dense_rank": 4,
+          "bm25_rank": 10
+        },
+        {
+          "chunk_id": "configmaps__0019",
+          "doc_id": "configmaps",
+          "title": "ConfigMaps",
+          "section": "What's next",
+          "text": "Read about Secrets .\nRead Configure a Pod to Use a ConfigMap .\nRead about changing a ConfigMap (or any other Kubernetes object)\nRead The Twelve-Factor App to understand the motivation for separating code from configuration.",
+          "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+          "category": "configuration",
+          "score": 0.46392014622688293,
+          "rank": 3,
+          "retrieval_score": 0.015206243032329989,
+          "dense_rank": 5,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "configmaps__0002",
+          "doc_id": "configmaps",
+          "title": "ConfigMaps",
+          "section": "ConfigMap object",
+          "text": "A ConfigMap is an API object that lets you store configuration for other objects to use. Unlike most Kubernetes objects that have a spec , a ConfigMap has data and binaryData fields. These fields accept key-value pairs as their values. Both the data field and the binaryData are optional. The data field is designed to contain UTF-8 strings while the binaryData field is designed to contain binary data as base64-encoded strings.\nThe name of a ConfigMap must be a valid DNS subdomain name .\nEach key under the data or the binaryData field must consist of alphanumeric characters, - , _ or . . The keys stored in data must not overlap with the keys in the binaryData field.\nStarting from v1.19, you can add an immutable field to a ConfigMap definition to create an immutable ConfigMap .",
+          "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+          "category": "configuration",
+          "score": 0.43322157859802246,
+          "rank": 4,
+          "retrieval_score": 0.01455357142857143,
+          "dense_rank": 10,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "configmaps__0011",
+          "doc_id": "configmaps",
+          "title": "ConfigMaps",
+          "section": "Using ConfigMaps as files from a Pod",
+          "text": "ted ConfigMap is fresh on every periodic sync. However, the kubelet uses its local cache for getting the current value of the ConfigMap. The type of the cache is configurable using the configMapAndSecretChangeDetectionStrategy field in the KubeletConfiguration struct . A ConfigMap can be either propagated by watch (default), ttl-based, or by redirecting all requests directly to the API server. As a result, the total delay from the moment when the ConfigMap is updated to the moment when new keys are projected to the Pod can be as long as the kubelet sync period + cache propagation delay, where the cache propagation delay depends on the chosen cache type (it equals to watch propagation delay, ttl of cache, or zero correspondingly).\nConfigMaps consumed as environment variables are not",
+          "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+          "category": "configuration",
+          "score": 0.4422350525856018,
+          "rank": 5,
+          "retrieval_score": 0.014037433155080214,
+          "dense_rank": 8,
+          "bm25_rank": 28
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 759,
+        "completion_tokens": 152,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q018",
+      "question": "컨테이너의 resource request와 limit가 각각 스케줄링과 런타임 제한에 어떻게 쓰이는가?",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "resource-management"
+      ],
+      "retrieved_doc_ids": [
+        "pods",
+        "resource-management",
+        "resource-management",
+        "sidecar-containers",
+        "resource-management"
+      ],
+      "cited_doc_ids": [
+        "pods",
+        "resource-management",
+        "sidecar-containers"
+      ],
+      "answer": "- **Resource request**: 컨테이너가 필요로 하는 최소 자원량입니다. kube-scheduler가 이 값을 기준으로 Pod를 배치할 노드를 결정하며, kubelet은 최소한 요청량을 사용할 수 있도록 자원을 예약합니다. 실제 사용량은 노드에 여유가 있으면 request보다 많을 수 있습니다.\n- **Resource limit**: 컨테이너가 사용할 수 있는 최대 자원량입니다. kubelet과 컨테이너 런타임이 이를 적용하고, 최종적으로 커널이 강제합니다. CPU는 초과 시 throttling되고, 메모리는 한도를 초과하면 OOM kill이 발생할 수 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.6666666666666666,
+      "retrieval": [
+        {
+          "chunk_id": "pods__0030",
+          "doc_id": "pods",
+          "title": "Pods",
+          "section": "Resource requests and limits",
+          "text": "When you specify a Pod, you can optionally specify how much of each resource a container needs. The most common resources to specify are CPU and memory (RAM).\nWhen you specify the resource request for containers in a Pod, the kube-scheduler uses this information to decide which node to place the Pod on. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set.\nCPU limits are enforced by CPU throttling. When a container approaches its CPU limit, the kernel restricts its access to CPU. Memory limits are enforced by the kernel with out-of-memory (OOM) kills when a container exceeds its limit.\nFor details on resource units, enforcement behavior, and configuration",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/",
+          "category": "workloads",
+          "score": 0.4501705765724182,
+          "rank": 1,
+          "retrieval_score": 0.016191677175283734,
+          "dense_rank": 1,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "resource-management__0001",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Requests and limits",
+          "text": "If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a container to use more resource than its request for that resource specifies.\nFor example, if you set a memory request of 256 MiB for a container, and that container is in a Pod scheduled to a Node with 8GiB of memory and no other Pods, then the container can try to use more RAM.\nLimits are a different story. Both cpu and memory limits are applied by the kubelet (and container runtime ), and are ultimately enforced by the kernel. On Linux nodes, the Linux kernel enforces limits with cgroups . The behavior of cpu and memory limit enforcement is slightly different.\ncpu limits are enforced by CPU throttling. When a container approaches its cpu limit, the kernel will restrict access to the",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.44112759828567505,
+          "rank": 2,
+          "retrieval_score": 0.015485074626865672,
+          "dense_rank": 4,
+          "bm25_rank": 7
+        },
+        {
+          "chunk_id": "resource-management__0013",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Pod resources example",
+          "text": "This feature can be enabled by setting the PodLevelResources feature gate . The following Pod has an explicit request of 1 CPU and 100 MiB of memory, and an explicit limit of 1 CPU and 200 MiB of memory. The pod-resources-demo-ctr-1 container has explicit requests and limits set. However, the pod-resources-demo-ctr-2 container will simply share the resources available within the Pod resource boundaries, as it does not have explicit requests and limits set.\napiVersion : v1 kind : Pod metadata : name : pod-resources-demo namespace : pod-resources-example spec : resources : limits : cpu : \"1\" memory : \"200Mi\" requests : cpu : \"1\" memory : \"100Mi\" containers : - name : pod-resources-demo-ctr-1 image : nginx resources : limits : cpu : \"0.5\" memory : \"100Mi\" requests : cpu : \"0.5\" memory :",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.44517192244529724,
+          "rank": 3,
+          "retrieval_score": 0.015329991645781119,
+          "dense_rank": 3,
+          "bm25_rank": 16
+        },
+        {
+          "chunk_id": "sidecar-containers__0014",
+          "doc_id": "sidecar-containers",
+          "title": "Sidecar Containers",
+          "section": "Resource sharing within containers",
+          "text": "Given the order of execution for init, sidecar and app containers, the following rules for resource usage apply:\nThe highest of any particular resource request or limit defined on all init containers is the effective init request/limit . If any resource has no resource limit specified this is considered as the highest limit.\nThe Pod's effective request/limit for a resource is the sum of pod overhead and the higher of: the sum of all non-init containers(app and sidecar containers) request/limit for a resource the effective init request/limit for a resource\nthe sum of all non-init containers(app and sidecar containers) request/limit for a resource\nthe effective init request/limit for a resource\nScheduling is done based on effective requests/limits, which means init containers can reserve",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/",
+          "category": "workloads",
+          "score": 0.43642497062683105,
+          "rank": 4,
+          "retrieval_score": 0.015151515151515152,
+          "dense_rank": 6,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "resource-management__0000",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Resource Management for Pods and Containers",
+          "text": "When you specify a Pod , you can optionally specify how much of each resource a container needs. The most common resources to specify are CPU and memory (RAM); there are others.\nWhen you specify the resource request for containers in a Pod, the kube-scheduler uses this information to decide which node to place the Pod on. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. The kubelet also reserves at least the request amount of that system resource specifically for that container to use.",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.4325488805770874,
+          "rank": 5,
+          "retrieval_score": 0.01487289142314089,
+          "dense_rank": 9,
+          "bm25_rank": 1
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 969,
+        "completion_tokens": 148,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q019",
+      "question": "nodeSelector와 node affinity를 표현력 관점에서 비교하라.",
+      "question_type": "comparison",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "assign-pods-nodes"
+      ],
+      "retrieved_doc_ids": [
+        "assign-pods-nodes",
+        "assign-pods-nodes",
+        "assign-pods-nodes",
+        "assign-pods-nodes",
+        "assign-pods-nodes"
+      ],
+      "cited_doc_ids": [
+        "assign-pods-nodes"
+      ],
+      "answer": "`nodeSelector`는 지정한 모든 노드 레이블이 일치하는 노드만 선택하는 단순한 방식입니다.\n\n반면 `node affinity`는 더 표현력이 높아 다음을 지원합니다.\n\n- `requiredDuringSchedulingIgnoredDuringExecution`: 조건을 반드시 만족해야 스케줄링\n- `preferredDuringSchedulingIgnoredDuringExecution`: 조건을 선호하지만, 일치하는 노드가 없어도 스케줄링 가능\n- `nodeSelector`보다 더 유연한 선택 로직\n\n따라서 `nodeSelector`는 단순한 필수 레이블 일치에 적합하고, 복잡하거나 선택적인 노드 배치 규칙에는 `node affinity`가 적합합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "assign-pods-nodes__0006",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Affinity and anti-affinity",
+          "text": "nodeSelector is the simplest way to constrain Pods to nodes with specific labels. Affinity and anti-affinity expand the types of constraints you can define. Some of the benefits of affinity and anti-affinity include:\nThe affinity/anti-affinity language is more expressive. nodeSelector only selects nodes with all the specified labels. Affinity/anti-affinity gives you more control over the selection logic.\nYou can indicate that a rule is soft or preferred , so that the scheduler still schedules the Pod even if it can't find a matching node.\nYou can constrain a Pod using labels on other Pods running on the node (or other topological domain), instead of just node labels, which allows you to define rules for which Pods can be co-located on a node.\nThe affinity feature consists of two types of",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.6113336086273193,
+          "rank": 1,
+          "retrieval_score": 0.016239754098360655,
+          "dense_rank": 1,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0007",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Affinity and anti-affinity",
+          "text": "fine rules for which Pods can be co-located on a node.\nThe affinity feature consists of two types of affinity:\nNode affinity functions like the nodeSelector field but is more expressive and allows you to specify soft rules.\nInter-pod affinity/anti-affinity allows you to constrain Pods against labels on other Pods.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.5753631591796875,
+          "rank": 2,
+          "retrieval_score": 0.016129032258064516,
+          "dense_rank": 2,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0008",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Node affinity",
+          "text": "Node affinity is conceptually similar to nodeSelector , allowing you to constrain which nodes your Pod can be scheduled on based on node labels. There are two types of node affinity:\nrequiredDuringSchedulingIgnoredDuringExecution : The scheduler can't schedule the Pod unless the rule is met. This functions like nodeSelector , but with a more expressive syntax.\npreferredDuringSchedulingIgnoredDuringExecution : The scheduler tries to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.\nYou can specify node affinities using the .spec.affinity.nodeAffinity field in your Pod spec.\nFor example, consider the following Pod spec:\napiVersion : v1 kind : Pod metadata : name : with-node-affinity spec : affinity : nodeAffinity :",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.5725810527801514,
+          "rank": 3,
+          "retrieval_score": 0.015977101223002863,
+          "dense_rank": 3,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0046",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "What's next",
+          "text": "Read more about taints and tolerations .\nRead the design docs for node affinity and for inter-pod affinity/anti-affinity .\nLearn about how the topology manager takes part in node-level resource allocation decisions.\nLearn how to use nodeSelector .\nLearn how to use affinity and anti-affinity .",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.5233252048492432,
+          "rank": 4,
+          "retrieval_score": 0.015295815295815297,
+          "dense_rank": 6,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0015",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Node affinity",
+          "text": "d, nodes need to satisfy addedAffinity and the Pod's .spec.NodeAffinity .\nSince the addedAffinity is not visible to end users, its behavior might be unexpected to them. Use node labels that have a clear correlation to the scheduler profile name.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.5449648499488831,
+          "rank": 5,
+          "retrieval_score": 0.014905094905094906,
+          "dense_rank": 5,
+          "bm25_rank": 17
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 641,
+        "completion_tokens": 152,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q020",
+      "question": "Taint와 toleration만 설정하면 특정 Pod가 반드시 해당 노드에 배치되는가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "taints-tolerations"
+      ],
+      "retrieved_doc_ids": [
+        "taints-tolerations",
+        "taints-tolerations",
+        "taints-tolerations",
+        "taints-tolerations",
+        "taints-tolerations"
+      ],
+      "cited_doc_ids": [
+        "taints-tolerations"
+      ],
+      "answer": "아니요. **Taint와 toleration만으로는 특정 Pod가 반드시 해당 노드에 배치되지 않습니다.**\n\nToleration은 Pod가 해당 Taint가 있는 노드에 **배치될 수 있도록 허용**할 뿐이며, 다른 노드에도 배치될 수 있습니다. 특정 노드에만 배치하려면 해당 노드에 Taint와 함께 Label을 설정하고, Pod에 적절한 노드 선택 조건(예: `nodeSelector` 또는 노드 어피니티)을 추가해야 합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.5,
+      "retrieval": [
+        {
+          "chunk_id": "taints-tolerations__0012",
+          "doc_id": "taints-tolerations",
+          "title": "Taints and Tolerations",
+          "section": "Example Use Cases",
+          "text": "Taints and tolerations are a flexible way to steer pods away from nodes or evict pods that shouldn't be running. A few of the use cases are\nDedicated Nodes : If you want to dedicate a set of nodes for exclusive use by a particular set of users, you can add a taint to those nodes (say, kubectl taint nodes nodename dedicated=groupName:NoSchedule ) and then add a corresponding toleration to their pods (this would be done most easily by writing a custom admission controller ). The pods with the tolerations will then be allowed to use the tainted (dedicated) nodes as well as any other nodes in the cluster. If you want to dedicate the nodes to them and ensure they only use the dedicated nodes, then you should additionally add a label similar to the taint to the same set of nodes (e.g.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+          "category": "scheduling",
+          "score": 0.6719013452529907,
+          "rank": 1,
+          "retrieval_score": 0.015781420765027324,
+          "dense_rank": 1,
+          "bm25_rank": 15
+        },
+        {
+          "chunk_id": "taints-tolerations__0004",
+          "doc_id": "taints-tolerations",
+          "title": "Taints and Tolerations",
+          "section": "Concepts",
+          "text": "ve example used the effect of NoSchedule . Alternatively, you can use the effect of PreferNoSchedule .\nThe allowed values for the effect field are:\nPods that do not tolerate the taint are evicted immediately\nPods that tolerate the taint without specifying tolerationSeconds in their toleration specification remain bound forever\nPods that tolerate the taint with a specified tolerationSeconds remain bound for the specified amount of time. After that time elapses, the node lifecycle controller evicts the Pods from the node.\nYou can put multiple taints on the same node and multiple tolerations on the same pod. The way Kubernetes processes multiple taints and tolerations is like a filter: start with all of a node's taints, then ignore the ones for which the pod has a matching toleration; the",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+          "category": "scheduling",
+          "score": 0.5789215564727783,
+          "rank": 2,
+          "retrieval_score": 0.015515314106863402,
+          "dense_rank": 3,
+          "bm25_rank": 11
+        },
+        {
+          "chunk_id": "taints-tolerations__0018",
+          "doc_id": "taints-tolerations",
+          "title": "Taints and Tolerations",
+          "section": "Example Use Cases",
+          "text": "toleration will schedule on them. But when you submit a pod that requests the extended resource, the ExtendedResourceToleration admission controller will automatically add the correct toleration to the pod and that pod will schedule on the special hardware nodes. This will make sure that these special hardware nodes are dedicated for pods requesting such hardware and you don't have to manually add tolerations to your pods.\nTaint based Evictions : A per-pod-configurable eviction behavior when there are node problems, which is described in the next section.\nTaint based Evictions : A per-pod-configurable eviction behavior when there are node problems, which is described in the next section.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+          "category": "scheduling",
+          "score": 0.5705820322036743,
+          "rank": 3,
+          "retrieval_score": 0.015384615384615385,
+          "dense_rank": 5,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "taints-tolerations__0007",
+          "doc_id": "taints-tolerations",
+          "title": "Taints and Tolerations",
+          "section": "Concepts",
+          "text": "hat is not tolerated by the pod.\nNormally, if a taint with effect NoExecute is added to a node, then any pods that do not tolerate the taint will be evicted immediately, and pods that do tolerate the taint will never be evicted. However, a toleration with NoExecute effect can specify an optional tolerationSeconds field that dictates how long the pod will stay bound to the node after the taint is added. For example,\ntolerations : - key : \"key1\" operator : \"Equal\" value : \"value1\" effect : \"NoExecute\" tolerationSeconds : 3600\nmeans that if this pod is running and a matching taint is added to the node, then the pod will stay bound to the node for 3600 seconds, and then be evicted. If the taint is removed before that time, the pod will not be evicted.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+          "category": "scheduling",
+          "score": 0.5705446004867554,
+          "rank": 4,
+          "retrieval_score": 0.015246212121212122,
+          "dense_rank": 6,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "taints-tolerations__0005",
+          "doc_id": "taints-tolerations",
+          "title": "Taints and Tolerations",
+          "section": "Concepts",
+          "text": "t with all of a node's taints, then ignore the ones for which the pod has a matching toleration; the remaining un-ignored taints have the indicated effects on the pod. In particular,\nif there is at least one un-ignored taint with effect NoSchedule then Kubernetes will not schedule the pod onto that node\nif there is no un-ignored taint with effect NoSchedule but there is at least one un-ignored taint with effect PreferNoSchedule then Kubernetes will try to not schedule the pod onto the node\nif there is at least one un-ignored taint with effect NoExecute then the pod will be evicted from the node (if it is already running on the node), and will not be scheduled onto the node (if it is not yet running on the node).\nFor example, imagine you taint a node like this\nkubectl taint nodes node1",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+          "category": "scheduling",
+          "score": 0.5650529861450195,
+          "rank": 5,
+          "retrieval_score": 0.014970601537765717,
+          "dense_rank": 7,
+          "bm25_rank": 6
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 998,
+        "completion_tokens": 117,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q021",
+      "question": "여러 zone에 Pod를 고르게 분산하면서 조건을 만족할 수 없을 때도 스케줄링을 허용하려면 어떤 설정을 쓰는가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "topology-spread"
+      ],
+      "retrieved_doc_ids": [
+        "topology-spread",
+        "assign-pods-nodes",
+        "topology-spread",
+        "topology-spread",
+        "topology-spread"
+      ],
+      "cited_doc_ids": [
+        "topology-spread",
+        "assign-pods-nodes"
+      ],
+      "answer": "`topologySpreadConstraints`에서 다음과 같이 설정합니다.\n\n```yaml\nwhenUnsatisfiable: ScheduleAnyway\n```\n\n이 설정은 분산 조건을 완전히 만족하지 못하더라도 스케줄러가 Pod를 배치하도록 허용합니다. 필요하면 `topologyKey`를 `zone`으로 지정해 여러 zone에 분산할 수 있습니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "topology-spread__0032",
+          "doc_id": "topology-spread",
+          "title": "Pod Topology Spread Constraints",
+          "section": "Example: conflicting topology spread constraints",
+          "text": "o satisfy the first constraint, the Pod mypod can only be placed into zone B ; while in terms of the second constraint, the Pod mypod can only schedule to node node2 . The intersection of the two constraints returns an empty set, and the scheduler cannot place the Pod.\nTo overcome this situation, you can either increase the value of maxSkew or modify one of the constraints to use whenUnsatisfiable: ScheduleAnyway . Depending on circumstances, you might also decide to delete an existing Pod manually - for example, if you are troubleshooting why a bug-fix rollout is not making progress.\nThe scheduler will skip the non-matching nodes from the skew calculations if the incoming Pod has spec.nodeSelector or spec.affinity.nodeAffinity defined.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "category": "scheduling",
+          "score": 0.5154246687889099,
+          "rank": 1,
+          "retrieval_score": 0.015746333045729078,
+          "dense_rank": 1,
+          "bm25_rank": 16
+        },
+        {
+          "chunk_id": "assign-pods-nodes__0025",
+          "doc_id": "assign-pods-nodes",
+          "title": "Assigning Pods to Nodes",
+          "section": "Inter-pod affinity and anti-affinity",
+          "text": "cifies that the scheduler should try to avoid scheduling the Pod on a node if that node belongs to a specific zone where other Pods have been labeled with security=S2 . For instance, if we have a cluster with a designated zone, let's call it \"Zone R,\" consisting of nodes labeled with topology.kubernetes.io/zone=R , the scheduler should avoid assigning the Pod to any node within Zone R, as long as there is at least one Pod within Zone R already labeled with security=S2 . Conversely, the anti-affinity rule does not impact scheduling into Zone R if there are no Pods with security=S2 labels.\nTo get yourself more familiar with the examples of Pod affinity and anti-affinity, refer to the design proposal .\nYou can use the In , NotIn , Exists and DoesNotExist values in the operator field for Pod",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+          "category": "scheduling",
+          "score": 0.468572199344635,
+          "rank": 2,
+          "retrieval_score": 0.01553349875930521,
+          "dense_rank": 5,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "topology-spread__0034",
+          "doc_id": "topology-spread",
+          "title": "Pod Topology Spread Constraints",
+          "section": "Example: topology spread constraints with node affinity",
+          "text": "color:#326ce5; class n5 k8s; class zoneC cluster;\nand you know that zone C must be excluded. In this case, you can compose a manifest as below, so that Pod mypod will be placed into zone B instead of zone C . Similarly, Kubernetes also respects spec.nodeSelector .\nkind : Pod apiVersion : v1 metadata : name : mypod labels : foo : bar spec : topologySpreadConstraints : - maxSkew : 1 topologyKey : zone whenUnsatisfiable : DoNotSchedule labelSelector : matchLabels : foo : bar affinity : nodeAffinity : requiredDuringSchedulingIgnoredDuringExecution : nodeSelectorTerms : - matchExpressions : - key : zone operator : NotIn values : - zoneC containers : - name : pause image : registry.k8s.io/pause:3.1",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "category": "scheduling",
+          "score": 0.46578264236450195,
+          "rank": 3,
+          "retrieval_score": 0.01521898703205285,
+          "dense_rank": 7,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "topology-spread__0027",
+          "doc_id": "topology-spread",
+          "title": "Pod Topology Spread Constraints",
+          "section": "Example: one topology spread constraint",
+          "text": "p2(Pod) --> n2(Node2) end classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000; classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff; classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5; class n1,n2,n3,n4,p1,p2,p3 k8s; class p4 plain; class zoneA,zoneB cluster;\nYou can tweak the Pod spec to meet various kinds of requirements:\nChange maxSkew to a bigger value - such as 2 - so that the incoming Pod can be placed into zone A as well.\nChange topologyKey to node so as to distribute the Pods evenly across nodes instead of zones. In the above example, if maxSkew remains 1 , the incoming Pod can only be placed onto the node node4 .\nChange whenUnsatisfiable: DoNotSchedule to whenUnsatisfiable: ScheduleAnyway to ensure the incoming Pod to be always",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "category": "scheduling",
+          "score": 0.4909477233886719,
+          "rank": 4,
+          "retrieval_score": 0.015198412698412699,
+          "dense_rank": 3,
+          "bm25_rank": 20
+        },
+        {
+          "chunk_id": "topology-spread__0030",
+          "doc_id": "topology-spread",
+          "title": "Pod Topology Spread Constraints",
+          "section": "Example: multiple topology spread constraints",
+          "text": "ion : v1 metadata : name : mypod labels : foo : bar spec : topologySpreadConstraints : - maxSkew : 1 topologyKey : zone whenUnsatisfiable : DoNotSchedule labelSelector : matchLabels : foo : bar - maxSkew : 1 topologyKey : node whenUnsatisfiable : DoNotSchedule labelSelector : matchLabels : foo : bar containers : - name : pause image : registry.k8s.io/pause:3.1\nIn this case, to match the first constraint, the incoming Pod can only be placed onto nodes in zone B ; while in terms of the second constraint, the incoming Pod can only be scheduled to the node node4 . The scheduler only considers options that satisfy all defined constraints, so the only valid placement is onto node node4 .",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "category": "scheduling",
+          "score": 0.4659029245376587,
+          "rank": 5,
+          "retrieval_score": 0.014978354978354978,
+          "dense_rank": 6,
+          "bm25_rank": 10
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1333,
+        "completion_tokens": 81,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q022",
+      "question": "높은 우선순위 Pod를 위한 선점이 발생할 때 낮은 우선순위 Pod에는 무엇이 일어날 수 있는가?",
+      "question_type": "fact",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "priority-preemption"
+      ],
+      "retrieved_doc_ids": [
+        "priority-preemption",
+        "priority-preemption",
+        "priority-preemption",
+        "pod-lifecycle",
+        "topology-spread"
+      ],
+      "cited_doc_ids": [
+        "priority-preemption",
+        "pod-lifecycle",
+        "topology-spread"
+      ],
+      "answer": "낮은 우선순위 Pod는 선점되어 퇴거(evict)될 수 있습니다. 이는 높은 우선순위 Pod가 스케줄링될 수 있도록 하기 위한 것입니다..scheduler는 일반적으로 가장 낮은 우선순위의 Pod부터 선점 대상으로 선택합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "priority-preemption__0000",
+          "doc_id": "priority-preemption",
+          "title": "Pod Priority and Preemption",
+          "section": "Pod Priority and Preemption",
+          "text": "Pods can have priority . Priority indicates the importance of a Pod relative to other Pods. If a Pod cannot be scheduled, the scheduler tries to preempt (evict) lower priority Pods to make scheduling of the pending Pod possible.\nIn a cluster where not all users are trusted, a malicious user could create Pods at the highest possible priorities, causing other Pods to be evicted/not get scheduled. An administrator can use ResourceQuota to prevent users from creating pods at high priorities.\nSee limit Priority Class consumption by default for details.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/",
+          "category": "scheduling",
+          "score": 0.5025134682655334,
+          "rank": 1,
+          "retrieval_score": 0.013114754098360656,
+          "dense_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "priority-preemption__0036",
+          "doc_id": "priority-preemption",
+          "title": "Pod Priority and Preemption",
+          "section": "Interactions between Pod priority and quality of service",
+          "text": "class to estimate the order in which pods are most likely to get evicted. The kubelet ranks pods for eviction based on the following factors:\nWhether the starved resource usage exceeds requests\nPod Priority\nAmount of resource usage relative to requests\nSee Pod selection for kubelet eviction for more details.\nkubelet node-pressure eviction does not evict Pods when their usage does not exceed their requests. If a Pod with lower priority is not exceeding its requests, it won't be evicted. Another Pod with higher priority that exceeds its requests may be evicted.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/",
+          "category": "scheduling",
+          "score": 0.4855444133281708,
+          "rank": 2,
+          "retrieval_score": 0.012903225806451613,
+          "dense_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "priority-preemption__0035",
+          "doc_id": "priority-preemption",
+          "title": "Pod Priority and Preemption",
+          "section": "Interactions between Pod priority and quality of service",
+          "text": "Pod priority and QoS class are two orthogonal features with few interactions and no default restrictions on setting the priority of a Pod based on its QoS classes. The scheduler's preemption logic does not consider QoS when choosing preemption targets. Preemption considers Pod priority and attempts to choose a set of targets with the lowest priority. Higher-priority Pods are considered for preemption only if the removal of the lowest priority Pods is not sufficient to allow the scheduler to schedule the preemptor Pod, or if the lowest priority Pods are protected by PodDisruptionBudget .\nThe kubelet uses Priority to determine pod order for node-pressure eviction . You can use the QoS class to estimate the order in which pods are most likely to get evicted. The kubelet ranks pods for",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/",
+          "category": "scheduling",
+          "score": 0.4784483015537262,
+          "rank": 3,
+          "retrieval_score": 0.012698412698412698,
+          "dense_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "pod-lifecycle__0004",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Pods and fault recovery",
+          "text": "If one of the containers in the Pod fails, then Kubernetes may try to restart that specific container. Read How Pods handle problems with containers to learn more.\nPods can however fail in a way that the cluster cannot recover from, and in that case Kubernetes does not attempt to heal the Pod further; instead, Kubernetes deletes the Pod and relies on other components to provide automatic healing.\nIf a Pod is scheduled to a node and that node then fails, the Pod is treated as unhealthy and Kubernetes eventually deletes the Pod. A Pod won't survive an eviction due to a lack of resources or Node maintenance.\nKubernetes uses a higher-level abstraction, called a controller , that handles the work of managing the relatively disposable Pod instances.\nA given Pod (as defined by a UID) is never",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.4452459216117859,
+          "rank": 4,
+          "retrieval_score": 0.012507534659433394,
+          "dense_rank": 19,
+          "bm25_rank": 24
+        },
+        {
+          "chunk_id": "topology-spread__0032",
+          "doc_id": "topology-spread",
+          "title": "Pod Topology Spread Constraints",
+          "section": "Example: conflicting topology spread constraints",
+          "text": "o satisfy the first constraint, the Pod mypod can only be placed into zone B ; while in terms of the second constraint, the Pod mypod can only schedule to node node2 . The intersection of the two constraints returns an empty set, and the scheduler cannot place the Pod.\nTo overcome this situation, you can either increase the value of maxSkew or modify one of the constraints to use whenUnsatisfiable: ScheduleAnyway . Depending on circumstances, you might also decide to delete an existing Pod manually - for example, if you are troubleshooting why a bug-fix rollout is not making progress.\nThe scheduler will skip the non-matching nodes from the skew calculations if the incoming Pod has spec.nodeSelector or spec.affinity.nodeAffinity defined.",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "category": "scheduling",
+          "score": 0.47768473625183105,
+          "rank": 5,
+          "retrieval_score": 0.0125,
+          "dense_rank": 4,
+          "bm25_rank": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 863,
+        "completion_tokens": 64,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q023",
+      "question": "Pod가 Pending 상태라면 어떤 정보와 리소스 제약을 우선 확인해야 하는가?",
+      "question_type": "troubleshooting",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "debug-pods",
+        "resource-management",
+        "taints-tolerations"
+      ],
+      "retrieved_doc_ids": [
+        "resource-management",
+        "resource-management",
+        "debug-pods",
+        "pod-lifecycle",
+        "resource-management"
+      ],
+      "cited_doc_ids": [
+        "resource-management",
+        "debug-pods",
+        "pod-lifecycle"
+      ],
+      "answer": "Pod가 `Pending`이면 우선 다음을 확인해야 합니다.\n\n1. **현재 상태와 최근 이벤트**\n   ```bash\n   kubectl describe pods <POD_NAME>\n   ```\n   특히 스케줄러의 `FailedScheduling` 메시지를 확인합니다.\n\n2. **리소스 부족 여부**\n   - CPU\n   - 메모리\n   - 확장 리소스(extended resources)\n\n   Pod의 모든 리소스 요청을 동시에 충족할 수 있어야 하며, 충족되지 않으면 계속 `Pending` 상태입니다.\n\n3. **노드의 용량과 할당량**\n   ```bash\n   kubectl describe nodes <NODE_NAME>\n   ```\n   노드의 CPU·메모리 용량과 이미 할당된 리소스를 확인합니다. Pod의 요청량이 모든 노드의 용량보다 크면 스케줄링할 수 없습니다.\n\n4. **노드 taint와 Pod toleration**\n   대부분의 노드에 taint가 있는데 Pod가 이를 tolerate하지 않으면 스케줄 가능한 노드가 제한됩니다.\n\n필요하면 노드를 추가하거나, 불필요한 Pod를 종료해 리소스를 확보할 수 있습니다.",
+      "recall_at_k": 0.6666666666666666,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "resource-management__0036",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Consuming extended resources",
+          "text": "ins in the PENDING state as long as the resource request cannot be satisfied.\nExample:\nThe Pod below requests 2 CPUs and 1 \"example.com/foo\" (an extended resource).\napiVersion : v1 kind : Pod metadata : name : my-pod spec : containers : - name : my-container image : myimage resources : requests : cpu : 2 example.com/foo : 1 limits : example.com/foo : 1",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.42382150888442993,
+          "rank": 1,
+          "retrieval_score": 0.01581745680106336,
+          "dense_rank": 1,
+          "bm25_rank": 14
+        },
+        {
+          "chunk_id": "resource-management__0039",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "My Pods are pending with event message FailedScheduling",
+          "text": "if a Pod is pending with a message of this type, there are several things to try:\nAdd more nodes to the cluster.\nTerminate unneeded Pods to make room for pending Pods.\nCheck that the Pod is not larger than all the nodes. For example, if all the nodes have a capacity of cpu: 1 , then a Pod with a request of cpu: 1.1 will never be scheduled.\nCheck for node taints. If most of your nodes are tainted, and the new Pod does not tolerate that taint, the scheduler only considers placements onto the remaining nodes that don't have that taint.\nYou can check node capacities and amounts allocated with the kubectl describe nodes command. For example:\nkubectl describe nodes e2e-test-node-pool-4lw4\nName: e2e-test-node-pool-4lw4 [ ... lines removed for clarity ...] Capacity: cpu: 2 memory: 7679792Ki",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.3631657361984253,
+          "rank": 2,
+          "retrieval_score": 0.014795008912655972,
+          "dense_rank": 8,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "debug-pods__0002",
+          "doc_id": "debug-pods",
+          "title": "Debug Pods",
+          "section": "Debugging Pods",
+          "text": "The first step in debugging a Pod is taking a look at it. Check the current state of the Pod and recent events with the following command:\nkubectl describe pods ${ POD_NAME }\nLook at the state of the containers in the pod. Are they all Running ? Have there been recent restarts?\nContinue debugging depending on the state of the pods.\nIf a Pod is stuck in Pending it means that it can not be scheduled onto a node. Generally this is because there are insufficient resources of one type or another that prevent scheduling. Look at the output of the kubectl describe ... command above. There should be messages from the scheduler about why it can not schedule your pod. Reasons include:\nYou don't have enough resources : You may have exhausted the supply of CPU or Memory in your cluster, in this case",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
+          "category": "troubleshooting",
+          "score": 0.3881436586380005,
+          "rank": 3,
+          "retrieval_score": 0.014505494505494505,
+          "dense_rank": 5,
+          "bm25_rank": 31
+        },
+        {
+          "chunk_id": "pod-lifecycle__0043",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Pod conditions",
+          "text": "reemption, eviction or garbage-collection).\nPodResizePending : a pod resize was requested but cannot be applied. See Pod resize status .\nPodResizeInProgress : the pod is in the process of resizing. See Pod resize status .",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.39601951837539673,
+          "rank": 4,
+          "retrieval_score": 0.0145,
+          "dense_rank": 4,
+          "bm25_rank": 40
+        },
+        {
+          "chunk_id": "resource-management__0035",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Consuming extended resources",
+          "text": "Users can consume extended resources in Pod specs like CPU and memory. The scheduler takes care of the resource accounting so that no more than the available amount is simultaneously allocated to Pods.\nThe API server restricts quantities of extended resources to whole numbers. Examples of valid quantities are 3 , 3000m and 3Ki . Examples of invalid quantities are 0.5 and 1500m (because 1500m would result in 1.5 ).\nTo consume an extended resource in a Pod, include the resource name as a key in the spec.containers[].resources.limits map in the container spec.\nA Pod is scheduled only if all of the resource requests are satisfied, including CPU, memory and any extended resources. The Pod remains in the PENDING state as long as the resource request cannot be satisfied.\nExample:\nThe Pod below",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.3657935857772827,
+          "rank": 5,
+          "retrieval_score": 0.014321250888415068,
+          "dense_rank": 7,
+          "bm25_rank": 24
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 827,
+        "completion_tokens": 254,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q024",
+      "question": "Service에 연결되지 않을 때 selector와 EndpointSlice를 어떤 순서로 확인해야 하는가?",
+      "question_type": "troubleshooting",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "debug-services",
+        "endpoint-slices",
+        "services"
+      ],
+      "retrieved_doc_ids": [
+        "services",
+        "debug-services",
+        "debug-pods",
+        "services",
+        "endpoint-slices"
+      ],
+      "cited_doc_ids": [
+        "services",
+        "debug-services",
+        "debug-pods"
+      ],
+      "answer": "다음 순서로 확인하세요.\n\n1. **Service의 `spec.selector` 확인**\n   - Service의 selector가 의도한 Pod의 `metadata.labels`와 정확히 일치하는지 확인합니다.\n   - 예:\n     ```bash\n     kubectl get pods --selector=name=nginx,type=frontend\n     ```\n   - 오타나 잘못된 라벨이 없는지 확인합니다.\n\n2. **해당 Service의 EndpointSlice 확인**\n   ```bash\n   kubectl get endpointslices -l kubernetes.io/service-name=<service-name>\n   ```\n   - `ENDPOINTS`에 Pod IP가 표시되는지 확인합니다.\n   - `<none>`이면 selector가 Pod를 선택하지 못했거나 EndpointSlice가 생성되지 않은 것입니다.\n\n3. **Pod의 포트 설정 확인**\n   - Pod의 `containerPort`가 Service의 `targetPort`와 일치하는지 확인합니다.\n\n4. **selector가 없는 Service인지 확인**\n   - selector가 없는 Service는 EndpointSlice가 자동 생성되지 않습니다.\n   - 이 경우 Service 이름을 `kubernetes.io/service-name` 라벨에 지정한 EndpointSlice를 수동으로 생성해야 합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "services__0014",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Services without selectors",
+          "text": "ment, such as \"staff\" or \"cluster-admins\" . You should avoid using the reserved value \"controller\" , which identifies EndpointSlices managed by Kubernetes' own control plane.\nAccessing a Service without a selector works the same as if it had a selector. In the example for a Service without a selector, traffic is routed to one of the two endpoints defined in the EndpointSlice manifest: a TCP connection to 10.1.2.3 or 10.4.5.6, on port 9376.\nAn ExternalName Service is a special case of Service that does not have selectors and uses DNS names instead. For more information, see the ExternalName section.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.516029953956604,
+          "rank": 1,
+          "retrieval_score": 0.015873015873015872,
+          "dense_rank": 3,
+          "bm25_rank": 3
+        },
+        {
+          "chunk_id": "debug-services__0018",
+          "doc_id": "debug-services",
+          "title": "Debug Services",
+          "section": "Does the Service have any EndpointSlices?",
+          "text": "ot crashing frequently or being restarted. Frequent restarts could lead to intermittent connectivity issues. If the restart count is high, read more about how to debug pods .\nInside the Kubernetes system is a control loop which evaluates the selector of every Service and saves the results into one or more EndpointSlice objects.\nkubectl get endpointslices -l kubernetes.io/service-name = hostnames NAME ADDRESSTYPE PORTS ENDPOINTS hostnames-ytpni IPv4 9376 10.244.0.5,10.244.0.6,10.244.0.7\nThis confirms that the EndpointSlice controller has found the correct Pods for your Service. If the ENDPOINTS column is <none> , you should check that the spec.selector field of your Service actually selects for metadata.labels values on your Pods. A common mistake is to have a typo or other error, such as",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/",
+          "category": "troubleshooting",
+          "score": 0.510841429233551,
+          "rank": 2,
+          "retrieval_score": 0.015432692307692307,
+          "dense_rank": 5,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "debug-pods__0012",
+          "doc_id": "debug-pods",
+          "title": "Debug Pods",
+          "section": "Debugging Services",
+          "text": "IP addresses in the Service's endpoint slices.\nIf you are missing endpoints, try listing Pods using the labels in the Service selector. For example, that you have a Service with the following selector:\n... spec : selector : name : nginx type : frontend\nYou can use:\nkubectl get pods --selector = name = nginx,type = frontend\nto list pods that match this selector. Verify that the list matches the Pods that you expect to provide your Service. Verify that the pod's containerPort matches the Service's targetPort\nPlease see debugging service for more information.",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
+          "category": "troubleshooting",
+          "score": 0.5133522748947144,
+          "rank": 3,
+          "retrieval_score": 0.015277777777777779,
+          "dense_rank": 4,
+          "bm25_rank": 12
+        },
+        {
+          "chunk_id": "services__0011",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Services without selectors",
+          "text": "ector to match Pods. For example:\napiVersion : v1 kind : Service metadata : name : my-service spec : ports : - name : http protocol : TCP port : 80 targetPort : 9376\nBecause this Service has no selector, the corresponding EndpointSlice objects are not created automatically. You can map the Service to the network address and port where it's running, by adding an EndpointSlice object manually. For example:\napiVersion : discovery.k8s.io/v1 kind : EndpointSlice metadata : name : my-service-1 # by convention, use the name of the Service # as a prefix for the name of the EndpointSlice labels : # You should set the \"kubernetes.io/service-name\" label. # Set its value to match the name of the Service kubernetes.io/service-name : my-service addressType : IPv4 ports : - name : http # should match",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.4892379641532898,
+          "rank": 4,
+          "retrieval_score": 0.01521898703205285,
+          "dense_rank": 7,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "endpoint-slices__0014",
+          "doc_id": "endpoint-slices",
+          "title": "EndpointSlices",
+          "section": "What's next",
+          "text": "Follow the Connecting Applications with Services tutorial\nRead the API reference for the EndpointSlice API\nRead the API reference for the Endpoints API",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/",
+          "category": "networking",
+          "score": 0.53411865234375,
+          "rank": 5,
+          "retrieval_score": 0.015198087431693989,
+          "dense_rank": 1,
+          "bm25_rank": 36
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 789,
+        "completion_tokens": 250,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q025",
+      "question": "실행 중인 distroless 컨테이너에 셸이 없을 때 어떤 Kubernetes 디버깅 기능을 사용할 수 있는가?",
+      "question_type": "troubleshooting",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "debug-running-pod"
+      ],
+      "retrieved_doc_ids": [
+        "debug-running-pod",
+        "network-policies",
+        "pod-lifecycle",
+        "probes",
+        "services"
+      ],
+      "cited_doc_ids": [
+        "debug-running-pod",
+        "network-policies",
+        "pod-lifecycle"
+      ],
+      "answer": "실행 중인 distroless 컨테이너에 셸이나 디버깅 도구가 없으면 **ephemeral debug container(임시 디버그 컨테이너)** 를 사용해 대화형으로 문제를 진단할 수 있습니다. 이는 `kubectl exec`만으로 부족한 경우에 유용합니다.",
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 1.0,
+      "retrieval": [
+        {
+          "chunk_id": "debug-running-pod__0020",
+          "doc_id": "debug-running-pod",
+          "title": "Debug a Running Pod",
+          "section": "Debugging with an ephemeral debug container",
+          "text": "Ephemeral containers are useful for interactive troubleshooting when kubectl exec is insufficient because a container has crashed or a container image doesn't include debugging utilities, such as with distroless images .",
+          "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+          "category": "troubleshooting",
+          "score": 0.4268956482410431,
+          "rank": 1,
+          "retrieval_score": 0.016181914331041776,
+          "dense_rank": 2,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "network-policies__0033",
+          "doc_id": "network-policies",
+          "title": "Network Policies",
+          "section": "What you can't do with network policies (at least, not yet)",
+          "text": "As of Kubernetes 1.37, the following functionality does not exist in the NetworkPolicy API, but you might be able to implement workarounds using Operating System components (such as SELinux, OpenVSwitch, IPTables, and so on) or Layer 7 technologies (Ingress controllers, Service Mesh implementations) or admission controllers. In case you are new to network security in Kubernetes, its worth noting that the following User Stories cannot (yet) be implemented using the NetworkPolicy API.\nForcing internal cluster traffic to go through a common gateway (this might be best served with a service mesh or other proxy).\nAnything TLS related (use a service mesh or ingress controller for this).\nNode specific policies (you can use CIDR notation for these, but you cannot target nodes by their Kubernetes",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+          "category": "networking",
+          "score": 0.44308987259864807,
+          "rank": 2,
+          "retrieval_score": 0.015198087431693989,
+          "dense_rank": 1,
+          "bm25_rank": 36
+        },
+        {
+          "chunk_id": "pod-lifecycle__0087",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Detection of kubelet restarts",
+          "text": "issue for people using Kubernetes, especially in large scale deployments. Although the feature gate allows reverting to this legacy behavior temporarily, the Kubernetes project recommends that you file a bug report if you encounter problems. The ChangeContainerStatusOnKubeletRestart feature gate will be removed in the future.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.40660297870635986,
+          "rank": 3,
+          "retrieval_score": 0.014860938148609382,
+          "dense_rank": 6,
+          "bm25_rank": 13
+        },
+        {
+          "chunk_id": "probes__0001",
+          "doc_id": "probes",
+          "title": "Configure Liveness Readiness and Startup Probes",
+          "section": "Before you begin",
+          "text": "You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster. It is recommended to run this tutorial on a cluster with at least two nodes that are not acting as control plane hosts. If you do not already have a cluster, you can create one by using minikube or you can use one of these Kubernetes playgrounds:\niximiuz Labs\nKillercoda\nKodeKloud",
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "category": "workloads",
+          "score": 0.41190576553344727,
+          "rank": 4,
+          "retrieval_score": 0.014673913043478261,
+          "dense_rank": 4,
+          "bm25_rank": 32
+        },
+        {
+          "chunk_id": "services__0005",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "Cloud-native service discovery",
+          "text": "If you're able to use Kubernetes APIs for service discovery in your application, you can query the API server for matching EndpointSlices. Kubernetes updates the EndpointSlices for a Service whenever the set of Pods in a Service changes.\nFor non-native applications, Kubernetes offers ways to place a network port or load balancer in between your application and the backend Pods.\nEither way, your workload can use these service discovery mechanisms to find the target it wants to connect to.",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.39907488226890564,
+          "rank": 5,
+          "retrieval_score": 0.014663256606990622,
+          "dense_rank": 8,
+          "bm25_rank": 9
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 612,
+        "completion_tokens": 74,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q026",
+      "question": "Namespace에 CPU와 메모리 quota가 있을 때 새 Pod 생성이 거절될 수 있는 조건은 무엇인가?",
+      "question_type": "reasoning",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": true,
+      "predicted_answerable": true,
+      "expected_doc_ids": [
+        "resource-quotas",
+        "resource-management"
+      ],
+      "retrieved_doc_ids": [
+        "resource-quotas",
+        "resource-quotas",
+        "resource-quotas",
+        "resource-quotas",
+        "resource-quotas"
+      ],
+      "cited_doc_ids": [
+        "resource-quotas"
+      ],
+      "answer": "새 Pod의 CPU 또는 메모리 **요청량(requests) 합계가 Namespace의 해당 quota를 초과하게 되면** 생성이 거절됩니다.\n\n예를 들어 메모리 quota가 1Gi이고 현재 사용량이 600Mi인 경우, 메모리 요청량이 700Mi인 새 Pod는 `600Mi + 700Mi > 1Gi`이므로 생성되지 않습니다. CPU도 동일하게 적용됩니다.",
+      "recall_at_k": 0.5,
+      "mrr": 1.0,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": 0.6666666666666666,
+      "retrieval": [
+        {
+          "chunk_id": "resource-quotas__0008",
+          "doc_id": "resource-quotas",
+          "title": "Configure Memory and CPU Quotas",
+          "section": "Attempt to create a second Pod",
+          "text": "econd Pod would cause the memory request total to exceed the memory request quota.\nError from server (Forbidden): error when creating \"examples/admin/resource/quota-mem-cpu-pod-2.yaml\": pods \"quota-mem-cpu-demo-2\" is forbidden: exceeded quota: mem-cpu-demo, requested: requests.memory=700Mi,used: requests.memory=600Mi, limited: requests.memory=1Gi",
+          "url": "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/",
+          "category": "troubleshooting",
+          "score": 0.6409344673156738,
+          "rank": 1,
+          "retrieval_score": 0.016191677175283734,
+          "dense_rank": 1,
+          "bm25_rank": 5
+        },
+        {
+          "chunk_id": "resource-quotas__0007",
+          "doc_id": "resource-quotas",
+          "title": "Configure Memory and CPU Quotas",
+          "section": "Attempt to create a second Pod",
+          "text": "Here is a manifest for a second Pod:\napiVersion : v1 kind : Pod metadata : name : quota-mem-cpu-demo-2 spec : containers : - name : quota-mem-cpu-demo-2-ctr image : redis resources : limits : memory : \"1Gi\" cpu : \"800m\" requests : memory : \"700Mi\" cpu : \"400m\"\nIn the manifest, you can see that the Pod has a memory request of 700 MiB. Notice that the sum of the used memory request and this new memory request exceeds the memory request quota: 600 MiB + 700 MiB > 1 GiB.\nAttempt to create the Pod:\nkubectl apply -f https://k8s.io/examples/admin/resource/quota-mem-cpu-pod-2.yaml --namespace = quota-mem-cpu-example\nThe second Pod does not get created. The output shows that creating the second Pod would cause the memory request total to exceed the memory request quota.\nError from server",
+          "url": "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/",
+          "category": "troubleshooting",
+          "score": 0.6322511434555054,
+          "rank": 2,
+          "retrieval_score": 0.016028225806451614,
+          "dense_rank": 2,
+          "bm25_rank": 4
+        },
+        {
+          "chunk_id": "resource-quotas__0000",
+          "doc_id": "resource-quotas",
+          "title": "Configure Memory and CPU Quotas",
+          "section": "Configure Memory and CPU Quotas for a Namespace",
+          "text": "This page shows how to set quotas for the total amount memory and CPU that can be used by all Pods running in a namespace . You specify quotas in a ResourceQuota object.",
+          "url": "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/",
+          "category": "troubleshooting",
+          "score": 0.6289871335029602,
+          "rank": 3,
+          "retrieval_score": 0.01559696342305038,
+          "dense_rank": 3,
+          "bm25_rank": 9
+        },
+        {
+          "chunk_id": "resource-quotas__0005",
+          "doc_id": "resource-quotas",
+          "title": "Configure Memory and CPU Quotas",
+          "section": "Create a Pod",
+          "text": "Here is a manifest for an example Pod:\napiVersion : v1 kind : Pod metadata : name : quota-mem-cpu-demo spec : containers : - name : quota-mem-cpu-demo-ctr image : nginx resources : limits : memory : \"800Mi\" cpu : \"800m\" requests : memory : \"600Mi\" cpu : \"400m\"\nCreate the Pod:\nkubectl apply -f https://k8s.io/examples/admin/resource/quota-mem-cpu-pod.yaml --namespace = quota-mem-cpu-example\nVerify that the Pod is running and that its (only) container is healthy:\nkubectl get pod quota-mem-cpu-demo --namespace = quota-mem-cpu-example\nOnce again, view detailed information about the ResourceQuota:\nkubectl get resourcequota mem-cpu-demo --namespace = quota-mem-cpu-example --output = yaml\nThe output shows the quota along with how much of the quota has been used. You can see that the memory and",
+          "url": "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/",
+          "category": "troubleshooting",
+          "score": 0.6160207986831665,
+          "rank": 4,
+          "retrieval_score": 0.01553349875930521,
+          "dense_rank": 5,
+          "bm25_rank": 2
+        },
+        {
+          "chunk_id": "resource-quotas__0011",
+          "doc_id": "resource-quotas",
+          "title": "Configure Memory and CPU Quotas",
+          "section": "For cluster administrators",
+          "text": "Configure Default Memory Requests and Limits for a Namespace\nConfigure Default Memory Requests and Limits for a Namespace\nConfigure Default CPU Requests and Limits for a Namespace\nConfigure Default CPU Requests and Limits for a Namespace\nConfigure Minimum and Maximum Memory Constraints for a Namespace\nConfigure Minimum and Maximum Memory Constraints for a Namespace\nConfigure Minimum and Maximum CPU Constraints for a Namespace\nConfigure Minimum and Maximum CPU Constraints for a Namespace\nConfigure a Pod Quota for a Namespace\nConfigure a Pod Quota for a Namespace\nConfigure Quotas for API Objects\nConfigure Quotas for API Objects",
+          "url": "https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/",
+          "category": "troubleshooting",
+          "score": 0.5948480367660522,
+          "rank": 5,
+          "retrieval_score": 0.015399900645802284,
+          "dense_rank": 6,
+          "bm25_rank": 1
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 827,
+        "completion_tokens": 98,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q027",
+      "question": "Kubernetes가 달 기지의 방사선 장애를 자동 복구하는 공식 절차는 무엇인가?",
+      "question_type": "unanswerable",
+      "llm_model": "gpt-5.6-luna",
+      "expected_answerable": false,
+      "predicted_answerable": true,
+      "expected_doc_ids": [],
+      "retrieved_doc_ids": [
+        "pod-lifecycle",
+        "pod-lifecycle",
+        "pod-lifecycle",
+        "jobs",
+        "pod-lifecycle"
+      ],
+      "cited_doc_ids": [
+        "pod-lifecycle",
+        "jobs"
+      ],
+      "answer": "제공된 정보에는 달 기지의 방사선 장애를 자동 복구하는 공식 절차가 없습니다. Kubernetes는 컨테이너 실패 시 `restartPolicy`에 따라 재시작을 시도하고, 복구할 수 없는 Pod나 노드 장애가 발생하면 Pod를 삭제하며 컨트롤러가 새 Pod를 생성하도록 할 수 있지만, 방사선 장애에 대한 절차는 설명되어 있지 않습니다.",
+      "recall_at_k": null,
+      "mrr": null,
+      "answerable_accuracy": 0.0,
+      "citation_accuracy": 0.0,
+      "criteria_coverage": null,
+      "retrieval": [
+        {
+          "chunk_id": "pod-lifecycle__0087",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Detection of kubelet restarts",
+          "text": "issue for people using Kubernetes, especially in large scale deployments. Although the feature gate allows reverting to this legacy behavior temporarily, the Kubernetes project recommends that you file a bug report if you encounter problems. The ChangeContainerStatusOnKubeletRestart feature gate will be removed in the future.",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.4337073564529419,
+          "rank": 1,
+          "retrieval_score": 0.015476190476190477,
+          "dense_rank": 3,
+          "bm25_rank": 12
+        },
+        {
+          "chunk_id": "pod-lifecycle__0051",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Resizing Pods",
+          "text": "icitly set a value for the associated feature gate InPlacePodVerticalScaling , Kubernetes ignores it but does not report any error.\nKubernetes supports changing the CPU and memory resources allocated to Pods after they are created. (For other infrastructure resources, you would need to use different techniques specific to those resources.) There are two main approaches to resizing CPU and memory:",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.4211142361164093,
+          "rank": 2,
+          "retrieval_score": 0.014871794871794871,
+          "dense_rank": 5,
+          "bm25_rank": 18
+        },
+        {
+          "chunk_id": "pod-lifecycle__0004",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "Pods and fault recovery",
+          "text": "If one of the containers in the Pod fails, then Kubernetes may try to restart that specific container. Read How Pods handle problems with containers to learn more.\nPods can however fail in a way that the cluster cannot recover from, and in that case Kubernetes does not attempt to heal the Pod further; instead, Kubernetes deletes the Pod and relies on other components to provide automatic healing.\nIf a Pod is scheduled to a node and that node then fails, the Pod is treated as unhealthy and Kubernetes eventually deletes the Pod. A Pod won't survive an eviction due to a lack of resources or Node maintenance.\nKubernetes uses a higher-level abstraction, called a controller , that handles the work of managing the relatively disposable Pod instances.\nA given Pod (as defined by a UID) is never",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.3881673812866211,
+          "rank": 3,
+          "retrieval_score": 0.013841113841113842,
+          "dense_rank": 14,
+          "bm25_rank": 6
+        },
+        {
+          "chunk_id": "jobs__0080",
+          "doc_id": "jobs",
+          "title": "Jobs",
+          "section": "Mutable Scheduling Directives",
+          "text": "template that can be updated are node affinity, node selector, tolerations, labels, annotations and scheduling gates .\nIn Kubernetes 1.34 or earlier mutating of Pod's scheduling directives is allowed only for suspended Jobs that have never been unsuspended before. In Kubernetes 1.35, this is allowed for any suspended Jobs when the MutableSchedulingDirectivesForSuspendedJobs feature gate is enabled.\nAdditionally, this feature gate enables clearing of the .status.startTime field on Job suspension .",
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/job/",
+          "category": "workloads",
+          "score": 0.39781635999679565,
+          "rank": 4,
+          "retrieval_score": 0.013611111111111112,
+          "dense_rank": 12,
+          "bm25_rank": 20
+        },
+        {
+          "chunk_id": "pod-lifecycle__0014",
+          "doc_id": "pod-lifecycle",
+          "title": "Pod Lifecycle",
+          "section": "How Pods handle problems with containers",
+          "text": "Kubernetes manages container failures within Pods using a restartPolicy defined in the Pod spec . This policy determines how Kubernetes reacts to containers exiting due to errors or other reasons, which falls in the following sequence:\nInitial crash : Kubernetes attempts an immediate restart based on the Pod restartPolicy .\nRepeated crashes : After the initial crash Kubernetes applies an exponential backoff delay for subsequent restarts, described in restartPolicy . This prevents rapid, repeated restart attempts from overloading the system.\nCrashLoopBackOff state : This indicates that the backoff delay mechanism is currently in effect for a given container that is in a crash loop, failing and restarting repeatedly.\nBackoff reset : If a container runs successfully for a certain duration",
+          "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+          "category": "workloads",
+          "score": 0.38560962677001953,
+          "rank": 5,
+          "retrieval_score": 0.013511390416339355,
+          "dense_rank": 16,
+          "bm25_rank": 7
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 674,
+        "completion_tokens": 95,
+        "cached_prompt_tokens": 0
+      },
+      "error": null
+    },
+    {
+      "id": "q028",
+      "question": "이 문서 모음에서 AWS EKS의 월별 비용을 계산하는 방법을 알려줘.",
+      "question_type": "unanswerable",
+      "llm_model": null,
+      "expected_answerable": false,
+      "predicted_answerable": false,
+      "expected_doc_ids": [],
+      "retrieved_doc_ids": [
+        "services",
+        "resource-management",
+        "resource-management",
+        "resource-management",
+        "resource-management"
+      ],
+      "cited_doc_ids": [],
+      "answer": "제공된 Kubernetes 문서에서 답변에 필요한 근거를 찾지 못했습니다.",
+      "recall_at_k": null,
+      "mrr": null,
+      "answerable_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "criteria_coverage": null,
+      "retrieval": [
+        {
+          "chunk_id": "services__0041",
+          "doc_id": "services",
+          "title": "Service",
+          "section": "type: LoadBalancer",
+          "text": "add one of the following annotations to your Service depending on the cloud service provider you're using:\nDefault GCP AWS Azure IBM Cloud OpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nGCP AWS Azure IBM Cloud OpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nAWS Azure IBM Cloud OpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nAzure IBM Cloud OpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nIBM Cloud OpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nOpenStack Baidu Cloud Tencent Cloud Alibaba Cloud OCI\nBaidu Cloud Tencent Cloud Alibaba Cloud OCI\nTencent Cloud Alibaba Cloud OCI\nAlibaba Cloud OCI\nOCI\nSelect one of the tabs.\nmetadata : name : my-service annotations : networking.gke.io/load-balancer-type : \"Internal\"\nmetadata : name : my-service annotations :",
+          "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+          "category": "networking",
+          "score": 0.2509985864162445,
+          "rank": 1,
+          "retrieval_score": 0.01487289142314089,
+          "dense_rank": 9,
+          "bm25_rank": 1
+        },
+        {
+          "chunk_id": "resource-management__0040",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "My Pods are pending with event message FailedScheduling",
+          "text": "ame: e2e-test-node-pool-4lw4 [ ... lines removed for clarity ...] Capacity: cpu: 2 memory: 7679792Ki pods: 110 Allocatable: cpu: 1800m memory: 7474992Ki pods: 110 [ ... lines removed for clarity ...] Non-terminated Pods: (5 in total) Namespace Name CPU Requests CPU Limits Memory Requests Memory Limits --------- ---- ------------ ---------- --------------- ------------- kube-system fluentd-gcp-v1.38-28bv1 100m (5%) 0 (0%) 200Mi (2%) 200Mi (2%) kube-system coredns-3297075139-61lj3 260m (13%) 0 (0%) 100Mi (1%) 170Mi (2%) kube-system kube-proxy-e2e-test-... 100m (5%) 0 (0%) 0 (0%) 0 (0%) kube-system monitoring-influxdb-grafana-v4-z1m12 200m (10%) 200m (10%) 600Mi (8%) 600Mi (8%) kube-system node-problem-detector-v0.1-fj7m3 20m (1%) 200m (10%) 20Mi (0%) 100Mi (1%) Allocated resources: (Total",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.3007965087890625,
+          "rank": 2,
+          "retrieval_score": 0.013114754098360656,
+          "dense_rank": 1,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "resource-management__0023",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Monitoring compute & memory resource usage",
+          "text": "The kubelet reports the resource usage of a Pod as part of the Pod status .\nIf optional tools for monitoring are available in your cluster, then Pod resource usage can be retrieved either from the Metrics API directly or from your monitoring tools.",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.2861751914024353,
+          "rank": 3,
+          "retrieval_score": 0.012903225806451613,
+          "dense_rank": 2,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "resource-management__0029",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "Resource monitoring for local ephemeral storage",
+          "text": "The kubelet can measure how much local ephemeral storage is being used. It does this as long as you have enabled local ephemeral storage capacity isolation.\nKubernetes tracks the amount of ephemeral storage a Pod uses from the following:\nWriting to the container's writable layer (rootfs), container images, or both.\nWriting to local emptyDir volumes.\nThe Pod's own logs (usually stored under /var/log/pods ).\nSystem files managed by Kubernetes that are mapped into the Pod, such as /etc/hosts .",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.2712286114692688,
+          "rank": 4,
+          "retrieval_score": 0.012698412698412698,
+          "dense_rank": 3,
+          "bm25_rank": null
+        },
+        {
+          "chunk_id": "resource-management__0047",
+          "doc_id": "resource-management",
+          "title": "Resource Management for Pods and Containers",
+          "section": "What's next",
+          "text": "Get hands-on experience assigning Memory resources to containers and Pods .\nGet hands-on experience assigning CPU resources to containers and Pods .\nRead how the API reference defines a container and its resource requirements\nRead more about the local ephemeral storage\nRead more about the kube-scheduler configuration reference (v1)\nRead more about Quality of Service classes for Pods\nRead more about Extended Resource allocation by DRA",
+          "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "category": "configuration",
+          "score": 0.26943278312683105,
+          "rank": 5,
+          "retrieval_score": 0.0125,
+          "dense_rank": 4,
+          "bm25_rank": null
+        }
+      ],
+      "usage": {},
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+chunk_size: 800
+chunk_overlap: 100
+embedding_batch_size: 64
+top_k: 5
+minimum_similarity: 0.30
+temperature: 0
+max_completion_tokens: 800
+reasoning_effort: none
+retrieval_mode: hybrid_rrf
+candidate_k: 50
+rrf_k: 60
+dense_weight: 0.8
+bm25_weight: 0.2
+seed: 42
